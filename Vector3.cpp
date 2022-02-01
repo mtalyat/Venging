@@ -28,6 +28,14 @@ Vector3::Vector3(float initX, float initY, float initZ)
 	z = initZ;
 }
 
+Vector3::Vector3(int initX, int initY) : Vector3((float)initX, (float)initY)
+{
+}
+
+Vector3::Vector3(int initX, int initY, int initZ) : Vector3((float)initX, (float)initY, (float)initZ)
+{
+}
+
 Vector3::Vector3(const Vector3& v)
 {
 	x = v.x;
@@ -159,4 +167,9 @@ Vector3 Vector3::one()
 std::string Vector3::toString()
 {
 	return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ")";
+}
+
+glm::vec3 Vector3::toVec3()
+{
+	return glm::vec3(x, y, z);
 }

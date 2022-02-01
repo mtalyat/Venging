@@ -24,7 +24,8 @@ public:
 	void set(const int x, const int y, const int z, BYTE type, BYTE color);
 	void set(const int i, BYTE type, BYTE color);
 
-	static const int sizeInBlocks = 64;
+	static const int sizeInBlocks = 32;
+	static const int totalSizeInBlocks = sizeInBlocks * sizeInBlocks * sizeInBlocks;
 private:
 	Map<int> blocks = Map<int>(sizeInBlocks);
 

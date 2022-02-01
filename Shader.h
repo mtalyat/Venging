@@ -1,7 +1,13 @@
 #ifndef SHADER_H
 #define SHADER_H
 
-#include <glad/glad.h>
+#include<glad/glad.h>
+#include<GLFW/glfw3.h>
+#include<glm/glm.hpp>
+#include<glm/gtc/matrix_transform.hpp>
+#include<glm/gtc/type_ptr.hpp>
+#include<glm/gtx/rotate_vector.hpp>
+#include<glm/gtx/vector_angle.hpp>
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -24,6 +30,13 @@ public:
 	void close();
 	void deleteProgram();
 
+	void setInt(GLint value, const GLchar* name);
+	void setFloat(GLfloat value, const GLchar* name);
+	void setVector2(glm::fvec2 value, const GLchar* name);
+	void setVector3(glm::fvec3 value, const GLchar* name);
+	void setVector4(glm::fvec4 value, const GLchar* name);
+	void setMatrix3(glm::mat3 value, const GLchar* name, GLboolean transpose = GL_FALSE);
+	void setMatrix4(glm::mat4 value, const GLchar* name, GLboolean transpose = GL_FALSE);
 private:
 	// Checks if the different Shaders have compiled properly
 	void compileErrors(unsigned int shader, const char* type);

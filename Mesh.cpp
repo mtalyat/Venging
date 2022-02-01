@@ -35,7 +35,7 @@ Mesh::Mesh()
 		0, 0, 0, 212, 176, 112,
 		2, 0, 0, 212, 176, 112,
 		2, 0, 2, 212, 176, 112,
-		1, 2, 1, 212, 176, 112
+		1, 2, 1, 235, 219, 194
 	};
 	int tTemp[] =
 	{
@@ -50,39 +50,7 @@ Mesh::Mesh()
 	setVertices(vTemp, 30);
 	setTriangles(tTemp, 18);
 
-	//Create VAO
-	vao = new VAO();
-	vao->bind();
-
-	vbo = new VBO(vertices, sizeof(int) * vertexCount);
-	ebo = new EBO(triangles, sizeof(int) * triangleCount);
-
-	//https://stackoverflow.com/questions/18919927/passing-uint-attribute-to-glsl
-	
-	//TEMP
-	//link X, Y, Z, R, G, B
-	//int i = 0;
-	//for (; i < 6; i++)
-	//{
-	//	vao->linkAttribute(*vbo, i, 1, GL_UNSIGNED_INT, 6 * sizeof(unsigned int), (void*)(i * 1 * sizeof(unsigned int)));
-	//}
-	vao->linkAttribute(*vbo, 0, 1, GL_UNSIGNED_INT, 6 * sizeof(int), (void*)0);
-	vao->linkAttribute(*vbo, 1, 1, GL_UNSIGNED_INT, 6 * sizeof(int), (void*)(1 * sizeof(int)));
-	vao->linkAttribute(*vbo, 2, 1, GL_UNSIGNED_INT, 6 * sizeof(int), (void*)(2 * sizeof(int)));
-	vao->linkAttribute(*vbo, 3, 1, GL_UNSIGNED_INT, 6 * sizeof(int), (void*)(3 * sizeof(int)));
-	vao->linkAttribute(*vbo, 4, 1, GL_UNSIGNED_INT, 6 * sizeof(int), (void*)(4 * sizeof(int)));
-	vao->linkAttribute(*vbo, 5, 1, GL_UNSIGNED_INT, 6 * sizeof(int), (void*)(5 * sizeof(int)));
-
-	//OLD
-	////link vertices to vec3 in shader
-	//vao->linkAttribute(*vbo, 0, 3, GL_UNSIGNED_INT, 6 * sizeof(unsigned int), (void*)0);
-	////link colors to vec3 in shader
-	//vao->linkAttribute(*vbo, 1, 3, GL_UNSIGNED_INT, 6 * sizeof(unsigned int), (void*)(3 * sizeof(unsigned int)));
-
-	//all done with VAO, VBO and EBO
-	vao->unbind();
-	vbo->unbind();
-	ebo->unbind();
+	rebuild();
 }
 
 Mesh::~Mesh()
@@ -101,10 +69,11 @@ Mesh::~Mesh()
 		delete[] triangles;
 }
 
-void Mesh::render(Shader* shaderProgram)
+void Mesh::render(Transform* transform, Shader* shaderProgram)
 {
 	//update matrices
 	//update uniforms
+	matrix(transform, shaderProgram);
 
 	//use this shader
 	shaderProgram->use();
@@ -151,4 +120,66 @@ void Mesh::setTriangles(int* tris, int amount)
 	{
 		triangles[i] = (GLuint)tris[i];
 	}
+}
+
+void Mesh::rebuild()
+{
+	//Create VAO
+	vao = new VAO();
+	vao->bind();
+
+	vbo = new VBO(vertices, sizeof(int) * vertexCount);
+	ebo = new EBO(triangles, sizeof(int) * triangleCount);
+
+	//https://stackoverflow.com/questions/18919927/passing-uint-attribute-to-glsl
+
+	//TEMP
+	//link X, Y, Z, R, G, B
+	//int i = 0;
+	//for (; i < 6; i++)
+	//{
+	//	vao->linkAttribute(*vbo, i, 1, GL_UNSIGNED_INT, 6 * sizeof(unsigned int), (void*)(i * 1 * sizeof(unsigned int)));
+	//}
+	vao->linkAttribute(*vbo, 0, 1, GL_UNSIGNED_INT, 6 * sizeof(int), (void*)0);
+	vao->linkAttribute(*vbo, 1, 1, GL_UNSIGNED_INT, 6 * sizeof(int), (void*)(1 * sizeof(int)));
+	vao->linkAttribute(*vbo, 2, 1, GL_UNSIGNED_INT, 6 * sizeof(int), (void*)(2 * sizeof(int)));
+	vao->linkAttribute(*vbo, 3, 1, GL_UNSIGNED_INT, 6 * sizeof(int), (void*)(3 * sizeof(int)));
+	vao->linkAttribute(*vbo, 4, 1, GL_UNSIGNED_INT, 6 * sizeof(int), (void*)(4 * sizeof(int)));
+	vao->linkAttribute(*vbo, 5, 1, GL_UNSIGNED_INT, 6 * sizeof(int), (void*)(5 * sizeof(int)));
+
+	//OLD
+	////link vertices to vec3 in shader
+	//vao->linkAttribute(*vbo, 0, 3, GL_UNSIGNED_INT, 6 * sizeof(unsigned int), (void*)0);
+	////link colors to vec3 in shader
+	//vao->linkAttribute(*vbo, 1, 3, GL_UNSIGNED_INT, 6 * sizeof(unsigned int), (void*)(3 * sizeof(unsigned int)));
+
+	//all done with VAO, VBO and EBO
+	vao->unbind();
+	vbo->unbind();
+	ebo->unbind();
+}
+
+void Mesh::matrix(Transform* transform, Shader* shaderProgram)
+{
+	//TODO: if no change from last time, do not do anything
+
+	//get values from transform
+	glm::vec3 pos = transform->getPosition().toVec3();
+	glm::vec3 origin(0.0f);//temp
+	glm::vec3 rotation(0.0f);//temp
+	glm::vec3 scale = transform->getScale().toVec3();
+
+	//modify matrix
+	glm::mat4 meshMatrix(1.0f);
+	meshMatrix = glm::translate(meshMatrix, origin);
+	meshMatrix = glm::rotate(meshMatrix, glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+	meshMatrix = glm::rotate(meshMatrix, glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+	meshMatrix = glm::rotate(meshMatrix, glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+	meshMatrix = glm::translate(meshMatrix, pos - origin);
+	meshMatrix = glm::scale(meshMatrix, scale);
+
+	//set in shader
+	shaderProgram->setMatrix4(meshMatrix, "meshMatrix");
+
+	//glUniformMatrix4fv(glGetUniformLocation(shaderProgram->ID, "meshMatrix"), 1, GL_FALSE, glm::value_ptr(projection * view));
 }

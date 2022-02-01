@@ -140,7 +140,7 @@ inline void List<T>::removeAt(const int index)
 template<typename T>
 T List<T>::get(const int index)
 {
-	if (!isInRange(index)) return nullptr;
+	if (!isInRange(index)) return NULL;
 
 	return content[index];
 }

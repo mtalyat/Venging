@@ -52,6 +52,70 @@ void Shader::deleteProgram()
 	glDeleteProgram(ID);
 }
 
+void Shader::setInt(GLint value, const GLchar* name)
+{
+	this->use();
+
+	glUniform1i(glGetUniformLocation(ID, name), value);
+
+	this->close();
+}
+
+void Shader::setFloat(GLfloat value, const GLchar* name)
+{
+	this->use();
+
+	glUniform1f(glGetUniformLocation(ID, name), value);
+
+	this->close();
+}
+
+void Shader::setVector2(glm::fvec2 value, const GLchar* name)
+{
+	this->use();
+
+	glUniform2fv(glGetUniformLocation(ID, name), 1, glm::value_ptr(value));
+
+	this->close();
+}
+
+void Shader::setVector3(glm::fvec3 value, const GLchar* name)
+{
+	this->use();
+
+	glUniform3fv(glGetUniformLocation(ID, name), 1, glm::value_ptr(value));
+
+	this->close();
+}
+
+void Shader::setVector4(glm::fvec4 value, const GLchar* name)
+{
+	this->use();
+
+	glUniform4fv(glGetUniformLocation(ID, name), 1, glm::value_ptr(value));
+
+	this->close();
+}
+
+void Shader::setMatrix3(glm::mat3 value, const GLchar* name, GLboolean transpose)
+{
+	this->use();
+
+	glUniformMatrix3fv(glGetUniformLocation(ID, name), 1, transpose, glm::value_ptr(value));
+
+	this->close();
+}
+
+void Shader::setMatrix4(glm::mat4 value, const GLchar* name, GLboolean transpose)
+{
+	this->use();
+
+	glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, transpose, glm::value_ptr(value));
+
+	this->close();
+	this->close();
+}
+
 // Checks if the different Shaders have compiled properly
 void Shader::compileErrors(unsigned int shader, const char* type)
 {

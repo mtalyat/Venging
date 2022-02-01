@@ -21,7 +21,7 @@ void RenderingSystem::render(Window* window)
 	int i = 0;
 	for (; i < renderers.length(); i++)
 	{
-		renderers[i]->mesh()->render(shaderProgram);
+		renderers[i]->mesh()->render(renderers[i]->transform(), shaderProgram);
 	}
 }
 

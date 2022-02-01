@@ -6,6 +6,7 @@
 #include "Renderer.h"
 #include "Console.h"
 #include "Vector3.h"
+#include "Color.h"
 
 class ChunkSystem :
     public System

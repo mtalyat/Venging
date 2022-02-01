@@ -17,10 +17,13 @@ layout (location = 5) in uint b;
 out vec3 color;
 
 uniform mat4 camMatrix;
+uniform mat4 meshMatrix;
+//uniform uint palette[256];
 
 void main()
 {
-	gl_Position = camMatrix * vec4(float(x), float(y), float(z), 1.0);
+	gl_Position = camMatrix * meshMatrix * vec4(float(x), float(y), float(z), 1.0);
 
+	//base color on index from vertices
 	color = vec3(float(r) / 255.0, float(g) / 255.0, float(b) / 255.0);
 }

@@ -45,6 +45,9 @@ public:
 	/// <param name="initZ">The initial z value.</param>
 	Vector3(float initX, float initY, float initZ);
 
+	Vector3(int initX, int initY);
+	Vector3(int initX, int initY, int initZ);
+
 	/// <summary>
 	/// Copy constructor.
 	/// </summary>
@@ -149,6 +152,8 @@ public:
 	static Vector3 one();
 
 	std::string toString() override;
+
+	glm::vec3 toVec3();
 };
 
 #endif

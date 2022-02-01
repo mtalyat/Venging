@@ -58,7 +58,7 @@ Vector3 Transform::getScale()
 		return getLocalScale();
 	}
 	else {
-		return parent->getScale() + getLocalScale();
+		return parent->getScale() * getLocalScale();
 	}
 }
 
