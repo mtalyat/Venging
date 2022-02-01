@@ -40,6 +40,11 @@ void Chunk::set(const int i, VoxelData vd)
 	set(i, vd.getRawData());
 }
 
+int Chunk::flatten(const int x, const int y, const int z)
+{
+	return x + sizeInBlocks * (z + sizeInBlocks * y);
+}
+
 int Chunk::combineData(BYTE type, BYTE color)
 {
 	return compact(0, 0, type, color);

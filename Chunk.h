@@ -59,6 +59,8 @@ public:
 
 	static const int sizeInBlocks = 32;
 	static const int totalSizeInBlocks = sizeInBlocks * sizeInBlocks * sizeInBlocks;
+
+	static int flatten(const int x, const int y, const int z);
 private:
 	Map<int> blocks = Map<int>(sizeInBlocks);
 

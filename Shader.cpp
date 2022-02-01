@@ -2,6 +2,8 @@
 
 Shader::Shader(const char* vertexFile, const char* fragmentFile)
 {
+	isWireframed = false;
+
 	std::string vertexCode = getFileContents(vertexFile);
 	std::string fragmentCode = getFileContents(fragmentFile);
 
@@ -50,6 +52,24 @@ void Shader::close()
 void Shader::deleteProgram()
 {
 	glDeleteProgram(ID);
+}
+
+void Shader::setWireframe(bool mode)
+{
+	isWireframed = mode;
+
+	if (mode)
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	}
+	else {
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
+}
+
+void Shader::toggleWireframe()
+{
+	setWireframe(!isWireframed);
 }
 
 void Shader::setInt(GLint value, const GLchar* name)
@@ -113,10 +133,9 @@ void Shader::setMatrix4(glm::mat4 value, const GLchar* name, GLboolean transpose
 	glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, transpose, glm::value_ptr(value));
 
 	close();
-	close();
 }
 
-void Shader::setPalette(ColorPalette* palette, const GLchar* name)
+void Shader::setPalette(ColorPalette* palette)
 {
 	use();
 
@@ -131,7 +150,22 @@ void Shader::setPalette(ColorPalette* palette, const GLchar* name)
 	}
 
 	//pass to shader
-	glUniform1iv(glGetUniformLocation(ID, name), COLOR_COUNT, uPalette);
+	glUniform1iv(glGetUniformLocation(ID, "palette"), COLOR_COUNT, uPalette);
+
+	close();
+}
+
+void Shader::setFaceShades(GLfloat f0, GLfloat f1, GLfloat f2, GLfloat f3)
+{
+	use();
+
+	GLfloat faces[4] = {
+		f0, f1, f2, f3
+	};
+
+	glUniform1fv(glGetUniformLocation(ID, "faceShades"), 4, faces);
+
+	close();
 }
 
 // Checks if the different Shaders have compiled properly

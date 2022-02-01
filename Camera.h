@@ -42,7 +42,7 @@ public:
 	/// <param name="width"></param>
 	/// <param name="height"></param>
 	/// <param name="window"></param>
-	void inputs(Window* window);
+	void inputs(Window* window, Shader* shaderProgram);
 
 	/// <summary>
 	/// Sets this Camera as the main Camera.

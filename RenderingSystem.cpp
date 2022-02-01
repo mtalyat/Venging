@@ -16,7 +16,7 @@ RenderingSystem::~RenderingSystem()
 
 void RenderingSystem::render(Window* window)
 {
-	Camera::main()->inputs(window);
+	Camera::main()->inputs(window, shaderProgram);
 	Camera::main()->matrix(45.0f, 0.1f, 1000.0f, shaderProgram, "camMatrix", window);
 
 	//render each mesh in the rendering system
@@ -29,7 +29,8 @@ void RenderingSystem::render(Window* window)
 
 void RenderingSystem::init()
 {
-	shaderProgram->setPalette(palette, "palette");
+	shaderProgram->setPalette(palette);
+	shaderProgram->setFaceShades(1.0f, 0.8f, 0.6f, 0.4f);
 }
 
 void RenderingSystem::addEntity(Entity* entity)

@@ -96,10 +96,10 @@ void Mesh::rebuild()
 	vbo = new VBO(vertices, sizeof(int) * vertexCount);
 	ebo = new EBO(triangles, sizeof(int) * triangleCount);
 
-	vao->linkAttribute(*vbo, 0, 1, GL_UNSIGNED_INT, 4 * sizeof(int), (void*)0);
-	vao->linkAttribute(*vbo, 1, 1, GL_UNSIGNED_INT, 4 * sizeof(int), (void*)(1 * sizeof(int)));
-	vao->linkAttribute(*vbo, 2, 1, GL_UNSIGNED_INT, 4 * sizeof(int), (void*)(2 * sizeof(int)));
-	vao->linkAttribute(*vbo, 3, 1, GL_UNSIGNED_INT, 4 * sizeof(int), (void*)(3 * sizeof(int)));
+	//vertex info
+	vao->linkAttribute(*vbo, 0, 1, GL_UNSIGNED_INT, 1 * sizeof(int), (void*)0);
+	//lighting info
+	//vao->linkAttribute(*vbo, 0, 1, GL_UNSIGNED_INT, 1 * sizeof(int), (void*)0); etc
 
 	//all done with VAO, VBO and EBO
 	vao->unbind();

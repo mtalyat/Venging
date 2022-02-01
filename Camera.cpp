@@ -31,7 +31,7 @@ void Camera::matrix(float FOVdeg, float nearPlane, float farPlane, Shader* shade
 	shader->setMatrix4(projection * view, "camMatrix");
 }
 
-void Camera::inputs(Window* window)
+void Camera::inputs(Window* window, Shader* shaderProgram)
 {
 	// Handles key inputs
 	if (glfwGetKey(window->glfwWindow(), GLFW_KEY_W) == GLFW_PRESS)
@@ -65,6 +65,10 @@ void Camera::inputs(Window* window)
 	else if (glfwGetKey(window->glfwWindow(), GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE)
 	{
 		speed = 0.1f;
+	}
+	if (glfwGetKey(window->glfwWindow(), GLFW_KEY_F1) == GLFW_PRESS)
+	{
+		shaderProgram->toggleWireframe();
 	}
 
 	// Handles mouse inputs

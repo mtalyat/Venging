@@ -13,6 +13,7 @@
 #include <sstream>
 #include <iostream>
 #include <cerrno>
+#include <cstdbool>
 #include "Object.h"
 #include "Helper.h"
 #include "ColorPalette.h"
@@ -32,6 +33,9 @@ public:
 	void close();
 	void deleteProgram();
 
+	void setWireframe(bool mode);
+	void toggleWireframe();
+
 	void setInt(GLint value, const GLchar* name);
 	void setFloat(GLfloat value, const GLchar* name);
 	void setVector2(glm::fvec2 value, const GLchar* name);
@@ -39,10 +43,14 @@ public:
 	void setVector4(glm::fvec4 value, const GLchar* name);
 	void setMatrix3(glm::mat3 value, const GLchar* name, GLboolean transpose = GL_FALSE);
 	void setMatrix4(glm::mat4 value, const GLchar* name, GLboolean transpose = GL_FALSE);
-	void setPalette(ColorPalette* palette, const GLchar* name);
+
+	void setPalette(ColorPalette* palette);
+	void setFaceShades(GLfloat f0, GLfloat f1, GLfloat f2, GLfloat f3);
 private:
 	// Checks if the different Shaders have compiled properly
 	void compileErrors(unsigned int shader, const char* type);
+
+	bool isWireframed;
 };
 
 #endif
