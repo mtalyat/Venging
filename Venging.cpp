@@ -86,6 +86,54 @@ int main()
     cs->addEntity(chunkEntity3);
     rs->addEntity(chunkEntity3);
 
+    //create striped chunk going the other way
+    Entity* chunkEntity4 = new Entity();
+    chunkEntity4->transform()->setPosition(Vector3(0, 0, Chunk::sizeInBlocks * 3));
+    Chunk* chunk4 = new Chunk();
+    chunkEntity4->addComponent(chunk4);
+    //set to striped
+    for (int y = 0; y < Chunk::sizeInBlocks; y++)
+    {
+        for (int x = 0; x < Chunk::sizeInBlocks; x++)
+        {
+            for (int z = 0; z < Chunk::sizeInBlocks; z++)
+            {
+                if (x % 2 == 0 && y % 2 == 0)
+                {
+                    chunk4->set(x, y, z, VoxelData(1, 255 - ((x + y + z) % 256)));
+                }
+            }
+        }
+    }
+    Renderer* chunkRenderer4 = new Renderer();
+    chunkEntity4->addComponent(chunkRenderer4);
+    cs->addEntity(chunkEntity4);
+    rs->addEntity(chunkEntity4);
+
+    //create striped chunk going up/down
+    Entity* chunkEntity5 = new Entity();
+    chunkEntity5->transform()->setPosition(Vector3(0, 0, Chunk::sizeInBlocks * 4));
+    Chunk* chunk5 = new Chunk();
+    chunkEntity5->addComponent(chunk5);
+    //set to striped
+    for (int y = 0; y < Chunk::sizeInBlocks; y++)
+    {
+        for (int x = 0; x < Chunk::sizeInBlocks; x++)
+        {
+            for (int z = 0; z < Chunk::sizeInBlocks; z++)
+            {
+                if (x % 2 == 0 && z % 2 == 0)
+                {
+                    chunk5->set(x, y, z, VoxelData(1, (x + y + z) % 256));
+                }
+            }
+        }
+    }
+    Renderer* chunkRenderer5 = new Renderer();
+    chunkEntity5->addComponent(chunkRenderer5);
+    cs->addEntity(chunkEntity5);
+    rs->addEntity(chunkEntity5);
+
     engine->run();
 
     //TODO: delete all of the above

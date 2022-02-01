@@ -1,5 +1,17 @@
 #include "ChunkSystem.h"
 
+/*
+
+Benchmark 1 for mesh building:
+
+Random 100:         9568 verts, 3588 tris
+Solid:              98304 verts, 36864 tris
+Stripes X dir:      532480 verts, 199680 tris
+Stripes Y dir:      532480 verts, 199680 tris
+Stripes Z dir:      532480 verts, 199680 tris
+
+*/
+
 void ChunkSystem::init()
 {
     //build meshes
