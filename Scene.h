@@ -42,6 +42,10 @@ public:
 	/// <param name="e"></param>
 	void instantiate(Entity* e, Vector3 position, Transform* parent);
 
+	/// <summary>
+	/// Adds a system to this Scene.
+	/// </summary>
+	/// <param name="system"></param>
 	void addSystem(System* system);
 
 	/// <summary>

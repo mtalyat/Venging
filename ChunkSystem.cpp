@@ -134,8 +134,6 @@ void createWestFace(List<int>* vertices, int& offset, List<int>* triangles, cons
 
 void ChunkSystem::buildMesh(Chunk* chunk)
 {
-    Console::Log("Building mesh");
-
     //no point in building if no renderer
     Renderer* r = chunk->entity()->getComponent<Renderer>();
     Mesh* mesh = r->createNewMesh();

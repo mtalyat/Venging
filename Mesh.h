@@ -24,6 +24,11 @@ public:
     Mesh();
     ~Mesh();
 
+    /// <summary>
+    /// Renders this Mesh to the screen using the given Transform and Shader.
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="shaderProgram"></param>
     void render(Transform* transform, Shader* shaderProgram);
 
     void setVertices(int* verts, int amount);

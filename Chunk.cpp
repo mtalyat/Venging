@@ -40,16 +40,6 @@ void Chunk::set(const int i, VoxelData vd)
 	set(i, vd.getRawData());
 }
 
-void Chunk::set(const int x, const int y, const int z, BYTE type, BYTE color)
-{
-	set(x, y, z, combineData(type, color));
-}
-
-void Chunk::set(const int i, BYTE type, BYTE color)
-{
-	set(i, combineData(type, color));
-}
-
 int Chunk::combineData(BYTE type, BYTE color)
 {
 	return compact(0, 0, type, color);

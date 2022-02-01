@@ -39,18 +39,54 @@ public:
 	//assignment operator
 	Color& operator = (const Color& obj);
 
+	/// <summary>
+	/// Gets the red value.
+	/// </summary>
+	/// <returns></returns>
 	int r();
+	/// <summary>
+	/// Gets the red value between 0.0f and 1.0f.
+	/// </summary>
+	/// <returns></returns>
 	float rf();
 
+	/// <summary>
+	/// Gets the green value.
+	/// </summary>
+	/// <returns></returns>
 	int g();
+	/// <summary>
+	/// Gets the green value between 0.0f and 1.0f.
+	/// </summary>
+	/// <returns></returns>
 	float gf();
 
+	/// <summary>
+	/// Gets the blue value.
+	/// </summary>
+	/// <returns></returns>
 	int b();
+	/// <summary>
+	/// Gets the blue value between 0.0f and 1.0f.
+	/// </summary>
+	/// <returns></returns>
 	float bf();
 
+	/// <summary>
+	/// Gets the alpha value.
+	/// </summary>
+	/// <returns></returns>
 	int a();
+	/// <summary>
+	/// Gets the alpha value between 0.0f and 1.0f.
+	/// </summary>
+	/// <returns></returns>
 	float af();
 
+	/// <summary>
+	/// Gets the raw stored data value.
+	/// </summary>
+	/// <returns></returns>
 	int rawData() const;
 
 	std::string toString() override;

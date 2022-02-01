@@ -10,6 +10,10 @@
 class Random
 {
 public:
+	/// <summary>
+	/// Initializes Random with the given seed. If this method is never called, the seed will be set to time(0) upon the first call of any other method.
+	/// </summary>
+	/// <param name="seed"></param>
 	static void seed(long unsigned int seed);
 
 	/// <summary>

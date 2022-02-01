@@ -45,7 +45,18 @@ public:
 	/// <param name="initZ">The initial z value.</param>
 	Vector3(float initX, float initY, float initZ);
 
+	/// <summary>
+	/// Creates a new Vector3 initialized at (initX, initY, 0).
+	/// </summary>
+	/// <param name="initX">The initial x value.</param>
+	/// <param name="initY">The initial y value.</param>
 	Vector3(int initX, int initY);
+	/// <summary>
+	/// Creates a new Vector3 initialized at (initX, initY, initZ).
+	/// </summary>
+	/// <param name="initX">The initial x value.</param>
+	/// <param name="initY">The initial y value.</param>
+	/// <param name="initZ">The initial z value.</param>
 	Vector3(int initX, int initY, int initZ);
 
 	/// <summary>
@@ -153,6 +164,10 @@ public:
 
 	std::string toString() override;
 
+	/// <summary>
+	/// Converts this Vector3 to a glm::vec3.
+	/// </summary>
+	/// <returns></returns>
 	glm::vec3 toVec3();
 };
 

@@ -29,21 +29,6 @@ int main()
     RenderingSystem* rs = new RenderingSystem();
     scene->addSystem(rs);
 
-    //mesh
-    Entity* meshEntity = new Entity();
-    Renderer* meshRenderer = new Renderer();
-    meshEntity->addComponent(meshRenderer);
-    rs->addEntity(meshEntity);
-    meshEntity->transform()->setPosition(Vector3(-1.0f, -1.0f, -1.0f));
-
-    ////mesh 2
-    //Entity* meshEntity2 = new Entity();
-    //Renderer* meshRenderer2 = new Renderer();
-    //meshEntity2->addComponent(meshRenderer2);
-    //rs->addEntity(meshEntity2);
-    //meshEntity2->transform()->setParent(meshEntity->transform());
-    //meshEntity2->transform()->setLocalPosition(Vector3(0.0f, 1.0f, 0.0f));
-
     //create a chunk
     Entity* chunkEntity = new Entity();
     Chunk* chunk = new Chunk();
@@ -52,7 +37,7 @@ int main()
     //set random colors
     for (int i = 0; i < 100; i++)
     {
-        chunk->set(Random::range(0, Chunk::totalSizeInBlocks), 1, Random::range(0, 256));
+        chunk->set(Random::range(0, Chunk::totalSizeInBlocks), VoxelData(1, Random::range(0, 256)));
     }
     Renderer* chunkRenderer = new Renderer();
     chunkEntity->addComponent(chunkRenderer);
@@ -69,7 +54,7 @@ int main()
     //set all to solid
     for (int i = 0; i < Chunk::totalSizeInBlocks; i++)
     {
-        chunk2->set(i, 1, i % 256);
+        chunk2->set(i, VoxelData(1, i % 256));
     }
     Renderer* chunkRenderer2 = new Renderer();
     chunkEntity2->addComponent(chunkRenderer2);
@@ -91,7 +76,7 @@ int main()
             {
                 if (z % 2 == 0 && y % 2 == 0)
                 {
-                    chunk3->set(x, y, z, 1, (x + y + z) % 256);
+                    chunk3->set(x, y, z, VoxelData(1, (x + y + z) % 256));
                 }
             }
         }

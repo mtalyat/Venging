@@ -19,7 +19,17 @@ public:
 
 	~ColorPalette();
 
+	/// <summary>
+	/// Sets the Color at the given index.
+	/// </summary>
+	/// <param name="index"></param>
+	/// <param name="c"></param>
 	void set(const int index, Color c);
+	/// <summary>
+	/// Gets the Color at the given index.
+	/// </summary>
+	/// <param name="index"></param>
+	/// <returns></returns>
 	Color get(const int index);
 private:
 	//initialize to default palette

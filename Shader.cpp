@@ -128,8 +128,6 @@ void Shader::setPalette(ColorPalette* palette, const GLchar* name)
 	for (; i < COLOR_COUNT; i++)
 	{
 		uPalette[i] = (GLint)palette->get(i).rawData();
-		Console::Log(palette->get(i).toString().c_str());
-		Console::Log(std::to_string(palette->get(i).rawData()).c_str());
 	}
 
 	//pass to shader

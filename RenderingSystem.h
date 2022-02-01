@@ -21,6 +21,10 @@ public:
     RenderingSystem();
     ~RenderingSystem();
 
+    /// <summary>
+    /// Renders the stored renderers onto the given Window.
+    /// </summary>
+    /// <param name="window"></param>
     void render(Window* window);
 
     void init() override;

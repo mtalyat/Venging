@@ -20,6 +20,10 @@ public:
 private:
     List<Chunk*> chunks;
 
+    /// <summary>
+    /// Builds the Mesh of this ChunkSystem to reflect the data within the given Chunk.
+    /// </summary>
+    /// <param name="chunk"></param>
     void buildMesh(Chunk* chunk);
 };
 
