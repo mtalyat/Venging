@@ -54,66 +54,86 @@ void Shader::deleteProgram()
 
 void Shader::setInt(GLint value, const GLchar* name)
 {
-	this->use();
+	use();
 
 	glUniform1i(glGetUniformLocation(ID, name), value);
 
-	this->close();
+	close();
 }
 
 void Shader::setFloat(GLfloat value, const GLchar* name)
 {
-	this->use();
+	use();
 
 	glUniform1f(glGetUniformLocation(ID, name), value);
 
-	this->close();
+	close();
 }
 
 void Shader::setVector2(glm::fvec2 value, const GLchar* name)
 {
-	this->use();
+	use();
 
 	glUniform2fv(glGetUniformLocation(ID, name), 1, glm::value_ptr(value));
 
-	this->close();
+	close();
 }
 
 void Shader::setVector3(glm::fvec3 value, const GLchar* name)
 {
-	this->use();
+	use();
 
 	glUniform3fv(glGetUniformLocation(ID, name), 1, glm::value_ptr(value));
 
-	this->close();
+	close();
 }
 
 void Shader::setVector4(glm::fvec4 value, const GLchar* name)
 {
-	this->use();
+	use();
 
 	glUniform4fv(glGetUniformLocation(ID, name), 1, glm::value_ptr(value));
 
-	this->close();
+	close();
 }
 
 void Shader::setMatrix3(glm::mat3 value, const GLchar* name, GLboolean transpose)
 {
-	this->use();
+	use();
 
 	glUniformMatrix3fv(glGetUniformLocation(ID, name), 1, transpose, glm::value_ptr(value));
 
-	this->close();
+	close();
 }
 
 void Shader::setMatrix4(glm::mat4 value, const GLchar* name, GLboolean transpose)
 {
-	this->use();
+	use();
 
 	glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, transpose, glm::value_ptr(value));
 
-	this->close();
-	this->close();
+	close();
+	close();
+}
+
+void Shader::setPalette(ColorPalette* palette, const GLchar* name)
+{
+	use();
+
+	//convert colors to GLuint array
+
+	GLint uPalette[COLOR_COUNT];//shader COLOR COUNT value is hard coded
+
+	int i = 0;
+	for (; i < COLOR_COUNT; i++)
+	{
+		uPalette[i] = (GLint)palette->get(i).rawData();
+		Console::Log(palette->get(i).toString().c_str());
+		Console::Log(std::to_string(palette->get(i).rawData()).c_str());
+	}
+
+	//pass to shader
+	glUniform1iv(glGetUniformLocation(ID, name), COLOR_COUNT, uPalette);
 }
 
 // Checks if the different Shaders have compiled properly

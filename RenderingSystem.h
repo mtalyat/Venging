@@ -11,6 +11,8 @@
 #include "EBO.h"
 #include "Window.h"
 #include "Camera.h"
+#include "ColorPalette.h"
+#include "Color.h"
 
 class RenderingSystem :
     public System
@@ -21,6 +23,8 @@ public:
 
     void render(Window* window);
 
+    void init() override;
+
     void addEntity(Entity* entity) override;
     bool removeEntity(Entity* entity) override;
 
@@ -29,6 +33,8 @@ private:
 
     //open gl stuff
     Shader* shaderProgram;
+
+    ColorPalette* palette;
 };
 
 #endif

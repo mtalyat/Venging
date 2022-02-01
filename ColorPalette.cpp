@@ -33,9 +33,20 @@ ColorPalette::~ColorPalette()
 
 void ColorPalette::set(const int index, Color c)
 {
+	if (index < 0 || index > COLOR_COUNT)
+	{
+		return;
+	}
+
+	*(colors + index) = c;
 }
 
 Color ColorPalette::get(const int index)
 {
-	return Color();
+	if (index < 0 || index > COLOR_COUNT)
+	{
+		return Color();
+	}
+
+	return *(colors + index);
 }

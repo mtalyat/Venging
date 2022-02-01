@@ -3,13 +3,15 @@
 RenderingSystem::RenderingSystem()
 {
 	shaderProgram = new Shader("default.vert", "default.frag");
+	palette = new ColorPalette("default.palette");
 }
 
 RenderingSystem::~RenderingSystem()
 {
 	shaderProgram->deleteProgram();
 
-	delete(shaderProgram);
+	delete shaderProgram;
+	delete palette;
 }
 
 void RenderingSystem::render(Window* window)
@@ -23,6 +25,11 @@ void RenderingSystem::render(Window* window)
 	{
 		renderers[i]->mesh()->render(renderers[i]->transform(), shaderProgram);
 	}
+}
+
+void RenderingSystem::init()
+{
+	shaderProgram->setPalette(palette, "palette");
 }
 
 void RenderingSystem::addEntity(Entity* entity)

@@ -36,8 +36,6 @@ private:
     VBO* vbo;
     EBO* ebo;
 
-    bool redrawNextFrame;
-
     GLuint* vertices;
     int vertexCount;
     GLuint* triangles;

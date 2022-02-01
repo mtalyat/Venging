@@ -52,7 +52,7 @@ int main()
     //set random colors
     for (int i = 0; i < 100; i++)
     {
-        chunk->set(Random::range(0, Chunk::totalSizeInBlocks), 1, 1);
+        chunk->set(Random::range(0, Chunk::totalSizeInBlocks), 1, Random::range(0, 256));
     }
     Renderer* chunkRenderer = new Renderer();
     chunkEntity->addComponent(chunkRenderer);
@@ -69,7 +69,7 @@ int main()
     //set all to solid
     for (int i = 0; i < Chunk::totalSizeInBlocks; i++)
     {
-        chunk2->set(i, 1, 1);
+        chunk2->set(i, 1, i % 256);
     }
     Renderer* chunkRenderer2 = new Renderer();
     chunkEntity2->addComponent(chunkRenderer2);
@@ -91,7 +91,7 @@ int main()
             {
                 if (z % 2 == 0 && y % 2 == 0)
                 {
-                    chunk3->set(x, y, z, 1, 1);
+                    chunk3->set(x, y, z, 1, (x + y + z) % 256);
                 }
             }
         }

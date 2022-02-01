@@ -75,8 +75,6 @@ private:
 	bool isInitialized;
 	bool isStarted;
 
-	ColorPalette palette;
-
 	RenderingSystem* renderSystem;
 
 	List<System*> systems;

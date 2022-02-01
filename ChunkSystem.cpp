@@ -53,13 +53,13 @@ bool shouldCreateFace(Chunk* chunk, int x, int y, int z, int xDir, int yDir, int
     return chunk->get(x + xDir, y + yDir, z + zDir).getType() == VoxelType::Air;
 }
 
-void createTopFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z)
+void createTopFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z, const unsigned int colorIndex)
 {
     //also gotta add colors
-    vertices->add(x); vertices->add(y + 1); vertices->add(z); vertices->add(255); vertices->add(255); vertices->add(255);           //  0
-    vertices->add(x + 1); vertices->add(y + 1); vertices->add(z); vertices->add(255); vertices->add(255); vertices->add(255);       //  1
-    vertices->add(x + 1); vertices->add(y + 1); vertices->add(z + 1); vertices->add(255); vertices->add(255); vertices->add(255);   //  2
-    vertices->add(x); vertices->add(y + 1); vertices->add(z + 1); vertices->add(255); vertices->add(255); vertices->add(255);       //  3
+    vertices->add(x); vertices->add(y + 1); vertices->add(z); vertices->add(colorIndex);           //  0
+    vertices->add(x + 1); vertices->add(y + 1); vertices->add(z); vertices->add(colorIndex);       //  1
+    vertices->add(x + 1); vertices->add(y + 1); vertices->add(z + 1); vertices->add(colorIndex);   //  2
+    vertices->add(x); vertices->add(y + 1); vertices->add(z + 1); vertices->add(colorIndex);       //  3
 
     triangles->add(offset + 0); triangles->add(offset + 2); triangles->add(offset + 1);
     triangles->add(offset + 0); triangles->add(offset + 3); triangles->add(offset + 2);
@@ -67,12 +67,12 @@ void createTopFace(List<int>* vertices, int& offset, List<int>* triangles, const
     offset += 4;
 }
 
-void createBottomFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z)
+void createBottomFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z, const unsigned int colorIndex)
 {
-    vertices->add(x); vertices->add(y); vertices->add(z); vertices->add(150); vertices->add(150); vertices->add(150);           //  0
-    vertices->add(x + 1); vertices->add(y); vertices->add(z); vertices->add(150); vertices->add(150); vertices->add(150);       //  1
-    vertices->add(x + 1); vertices->add(y); vertices->add(z + 1); vertices->add(150); vertices->add(150); vertices->add(150);   //  2
-    vertices->add(x); vertices->add(y); vertices->add(z + 1); vertices->add(150); vertices->add(150); vertices->add(150);       //  3
+    vertices->add(x); vertices->add(y); vertices->add(z); vertices->add(colorIndex);           //  0
+    vertices->add(x + 1); vertices->add(y); vertices->add(z); vertices->add(colorIndex);       //  1
+    vertices->add(x + 1); vertices->add(y); vertices->add(z + 1); vertices->add(colorIndex);   //  2
+    vertices->add(x); vertices->add(y); vertices->add(z + 1); vertices->add(colorIndex);       //  3
 
     triangles->add(offset + 0); triangles->add(offset + 1); triangles->add(offset + 2);
     triangles->add(offset + 0); triangles->add(offset + 2); triangles->add(offset + 3);
@@ -80,12 +80,12 @@ void createBottomFace(List<int>* vertices, int& offset, List<int>* triangles, co
     offset += 4;
 }
 
-void createNorthFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z)
+void createNorthFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z, const unsigned int colorIndex)
 {
-    vertices->add(x + 1); vertices->add(y); vertices->add(z + 1); vertices->add(200); vertices->add(200); vertices->add(200);           //  0
-    vertices->add(x + 1); vertices->add(y + 1); vertices->add(z + 1); vertices->add(200); vertices->add(200); vertices->add(200);       //  1
-    vertices->add(x); vertices->add(y + 1); vertices->add(z + 1); vertices->add(200); vertices->add(200); vertices->add(200);           //  2
-    vertices->add(x); vertices->add(y); vertices->add(z + 1); vertices->add(200); vertices->add(200); vertices->add(200);               //  3
+    vertices->add(x + 1); vertices->add(y); vertices->add(z + 1); vertices->add(colorIndex);           //  0
+    vertices->add(x + 1); vertices->add(y + 1); vertices->add(z + 1); vertices->add(colorIndex);       //  1
+    vertices->add(x); vertices->add(y + 1); vertices->add(z + 1); vertices->add(colorIndex);           //  2
+    vertices->add(x); vertices->add(y); vertices->add(z + 1); vertices->add(colorIndex);               //  3
 
     triangles->add(offset + 0); triangles->add(offset + 1); triangles->add(offset + 2);
     triangles->add(offset + 0); triangles->add(offset + 2); triangles->add(offset + 3);
@@ -93,12 +93,12 @@ void createNorthFace(List<int>* vertices, int& offset, List<int>* triangles, con
     offset += 4;
 }
 
-void createSouthFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z)
+void createSouthFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z, const unsigned int colorIndex)
 {
-    vertices->add(x); vertices->add(y); vertices->add(z); vertices->add(200); vertices->add(200); vertices->add(200);                   //  0
-    vertices->add(x); vertices->add(y + 1); vertices->add(z); vertices->add(200); vertices->add(200); vertices->add(200);               //  1
-    vertices->add(x + 1); vertices->add(y + 1); vertices->add(z); vertices->add(200); vertices->add(200); vertices->add(200);           //  2
-    vertices->add(x + 1); vertices->add(y); vertices->add(z); vertices->add(200); vertices->add(200); vertices->add(200);               //  3
+    vertices->add(x); vertices->add(y); vertices->add(z); vertices->add(colorIndex);                   //  0
+    vertices->add(x); vertices->add(y + 1); vertices->add(z); vertices->add(colorIndex);               //  1
+    vertices->add(x + 1); vertices->add(y + 1); vertices->add(z); vertices->add(colorIndex);           //  2
+    vertices->add(x + 1); vertices->add(y); vertices->add(z); vertices->add(colorIndex);               //  3
 
     triangles->add(offset + 0); triangles->add(offset + 1); triangles->add(offset + 2);
     triangles->add(offset + 0); triangles->add(offset + 2); triangles->add(offset + 3);
@@ -106,12 +106,12 @@ void createSouthFace(List<int>* vertices, int& offset, List<int>* triangles, con
     offset += 4;
 }
 
-void createEastFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z)
+void createEastFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z, const unsigned int colorIndex)
 {
-    vertices->add(x + 1); vertices->add(y); vertices->add(z); vertices->add(225); vertices->add(225); vertices->add(225);                   //  0
-    vertices->add(x + 1); vertices->add(y + 1); vertices->add(z); vertices->add(225); vertices->add(225); vertices->add(225);               //  1
-    vertices->add(x + 1); vertices->add(y + 1); vertices->add(z + 1); vertices->add(225); vertices->add(225); vertices->add(225);           //  2
-    vertices->add(x + 1); vertices->add(y); vertices->add(z + 1); vertices->add(225); vertices->add(225); vertices->add(225);               //  3
+    vertices->add(x + 1); vertices->add(y); vertices->add(z); vertices->add(colorIndex);                   //  0
+    vertices->add(x + 1); vertices->add(y + 1); vertices->add(z); vertices->add(colorIndex);               //  1
+    vertices->add(x + 1); vertices->add(y + 1); vertices->add(z + 1); vertices->add(colorIndex);           //  2
+    vertices->add(x + 1); vertices->add(y); vertices->add(z + 1); vertices->add(colorIndex);               //  3
 
     triangles->add(offset + 0); triangles->add(offset + 1); triangles->add(offset + 2);
     triangles->add(offset + 0); triangles->add(offset + 2); triangles->add(offset + 3);
@@ -119,12 +119,12 @@ void createEastFace(List<int>* vertices, int& offset, List<int>* triangles, cons
     offset += 4;
 }
 
-void createWestFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z)
+void createWestFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z, const unsigned int colorIndex)
 {
-    vertices->add(x); vertices->add(y); vertices->add(z + 1); vertices->add(225); vertices->add(225); vertices->add(225);                   //  0
-    vertices->add(x); vertices->add(y + 1); vertices->add(z + 1); vertices->add(225); vertices->add(225); vertices->add(225);                   //  1
-    vertices->add(x); vertices->add(y + 1); vertices->add(z); vertices->add(225); vertices->add(225); vertices->add(225);                   //  2
-    vertices->add(x); vertices->add(y); vertices->add(z); vertices->add(225); vertices->add(225); vertices->add(225);                   //  3
+    vertices->add(x); vertices->add(y); vertices->add(z + 1); vertices->add(colorIndex);                   //  0
+    vertices->add(x); vertices->add(y + 1); vertices->add(z + 1); vertices->add(colorIndex);               //  1
+    vertices->add(x); vertices->add(y + 1); vertices->add(z); vertices->add(colorIndex);                   //  2
+    vertices->add(x); vertices->add(y); vertices->add(z); vertices->add(colorIndex);;                      //  3
 
     triangles->add(offset + 0); triangles->add(offset + 1); triangles->add(offset + 2);
     triangles->add(offset + 0); triangles->add(offset + 2); triangles->add(offset + 3);
@@ -180,22 +180,22 @@ void ChunkSystem::buildMesh(Chunk* chunk)
                         switch (i)
                         {
                         case 0:
-                            createTopFace(&vertices, offset, &triangles, x, y, z);
+                            createTopFace(&vertices, offset, &triangles, x, y, z, chunk->get(x, y, z).getColor());
                             break;
                         case 1:
-                            createBottomFace(&vertices, offset, &triangles, x, y, z);
+                            createBottomFace(&vertices, offset, &triangles, x, y, z, chunk->get(x, y, z).getColor());
                             break;
                         case 2:
-                            createNorthFace(&vertices, offset, &triangles, x, y, z);
+                            createNorthFace(&vertices, offset, &triangles, x, y, z, chunk->get(x, y, z).getColor());
                             break;
                         case 3:
-                            createSouthFace(&vertices, offset, &triangles, x, y, z);
+                            createSouthFace(&vertices, offset, &triangles, x, y, z, chunk->get(x, y, z).getColor());
                             break;
                         case 4:
-                            createEastFace(&vertices, offset, &triangles, x, y, z);
+                            createEastFace(&vertices, offset, &triangles, x, y, z, chunk->get(x, y, z).getColor());
                             break;
                         case 5:
-                            createWestFace(&vertices, offset, &triangles, x, y, z);
+                            createWestFace(&vertices, offset, &triangles, x, y, z, chunk->get(x, y, z).getColor());
                             break;
                         }
                     }

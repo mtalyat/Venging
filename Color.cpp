@@ -66,6 +66,11 @@ float Color::af()
 	return a() / (float)BYTE_MAX;
 }
 
+int Color::rawData() const
+{
+	return data;
+}
+
 std::string Color::toString()
 {
 	return "(" + std::to_string(r()) + ", " + std::to_string(g()) + ", " + std::to_string(b()) + ", " + std::to_string(a()) + ")";

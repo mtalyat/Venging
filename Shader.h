@@ -15,6 +15,8 @@
 #include <cerrno>
 #include "Object.h"
 #include "Helper.h"
+#include "ColorPalette.h"
+#include "Color.h"
 
 /// <summary>
 /// An interface for vertex and fragment shaders.
@@ -37,6 +39,7 @@ public:
 	void setVector4(glm::fvec4 value, const GLchar* name);
 	void setMatrix3(glm::mat3 value, const GLchar* name, GLboolean transpose = GL_FALSE);
 	void setMatrix4(glm::mat4 value, const GLchar* name, GLboolean transpose = GL_FALSE);
+	void setPalette(ColorPalette* palette, const GLchar* name);
 private:
 	// Checks if the different Shaders have compiled properly
 	void compileErrors(unsigned int shader, const char* type);

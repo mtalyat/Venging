@@ -51,6 +51,8 @@ public:
 	int a();
 	float af();
 
+	int rawData() const;
+
 	std::string toString() override;
 
 	//the following are all shorthand for their respective colors
@@ -58,7 +60,7 @@ public:
 	static Color gray() { return Color(127, 127, 127); }
 	static Color black() { return Color(0, 0, 0); }
 private:
-	int data;
+	unsigned int data;
 
 	void set(int r, int g, int b, int a);
 };
