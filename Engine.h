@@ -9,6 +9,7 @@
 #include "List.h"
 #include "Object.h"
 #include "ColorPalette.h"
+#include "Stopwatch.h"
 
 class Window;
 class Scene;

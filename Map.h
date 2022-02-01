@@ -75,6 +75,12 @@ public:
 	/// <returns></returns>
 	bool isInMap(const int x, const int y, const int z);
 
+	/// <summary>
+	/// Clears the Map with the given T.
+	/// </summary>
+	/// <param name="t"></param>
+	void clear(T t);
+
 	T operator[](const int index);
 
 private:
@@ -153,6 +159,16 @@ template<class T>
 inline bool Map<T>::isInMap(const int x, const int y, const int z)
 {
 	return (y >= 0 && y < size) && (x >= 0 && x < size) && (z >= 0 && z < size);
+}
+
+template<class T>
+inline void Map<T>::clear(T t)
+{
+	int i = 0;
+	for (; i < size; i++)
+	{
+		data[i] = t;
+	}
 }
 
 template<class T>

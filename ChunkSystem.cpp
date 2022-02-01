@@ -115,10 +115,10 @@ void createTopFace(List<int>* vertices, int& offset, List<int>* triangles, const
 
 void createBottomFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z, const unsigned int colorIndex)
 {
-    vertices->add(compactVertex(colorIndex, x, y, z, 0));
-    vertices->add(compactVertex(colorIndex, x + 1, y, z, 0));
-    vertices->add(compactVertex(colorIndex, x + 1, y, z + 1, 0));
-    vertices->add(compactVertex(colorIndex, x, y, z + 1, 0));
+    vertices->add(compactVertex(colorIndex, x, y, z, 3));
+    vertices->add(compactVertex(colorIndex, x + 1, y, z, 3));
+    vertices->add(compactVertex(colorIndex, x + 1, y, z + 1, 3));
+    vertices->add(compactVertex(colorIndex, x, y, z + 1, 3));
 
     triangles->add(offset + 0); triangles->add(offset + 2); triangles->add(offset + 1);
     triangles->add(offset + 0); triangles->add(offset + 3); triangles->add(offset + 2);
@@ -128,10 +128,10 @@ void createBottomFace(List<int>* vertices, int& offset, List<int>* triangles, co
 
 void createNorthFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z, const unsigned int colorIndex)
 {
-    vertices->add(compactVertex(colorIndex, x + 1, y, z + 1, 0));
-    vertices->add(compactVertex(colorIndex, x + 1, y + 1, z + 1, 0));
-    vertices->add(compactVertex(colorIndex, x, y + 1, z + 1, 0));
-    vertices->add(compactVertex(colorIndex, x, y, z + 1, 0));
+    vertices->add(compactVertex(colorIndex, x + 1, y, z + 1, 1));
+    vertices->add(compactVertex(colorIndex, x + 1, y + 1, z + 1, 1));
+    vertices->add(compactVertex(colorIndex, x, y + 1, z + 1, 1));
+    vertices->add(compactVertex(colorIndex, x, y, z + 1, 1));
 
     triangles->add(offset + 0); triangles->add(offset + 2); triangles->add(offset + 1);
     triangles->add(offset + 0); triangles->add(offset + 3); triangles->add(offset + 2);
@@ -141,10 +141,10 @@ void createNorthFace(List<int>* vertices, int& offset, List<int>* triangles, con
 
 void createSouthFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z, const unsigned int colorIndex)
 {
-    vertices->add(compactVertex(colorIndex, x, y, z, 0));
-    vertices->add(compactVertex(colorIndex, x, y + 1, z, 0));
-    vertices->add(compactVertex(colorIndex, x + 1, y + 1, z, 0));
-    vertices->add(compactVertex(colorIndex, x + 1, y, z, 0));
+    vertices->add(compactVertex(colorIndex, x, y, z, 1));
+    vertices->add(compactVertex(colorIndex, x, y + 1, z, 1));
+    vertices->add(compactVertex(colorIndex, x + 1, y + 1, z, 1));
+    vertices->add(compactVertex(colorIndex, x + 1, y, z, 1));
 
     triangles->add(offset + 0); triangles->add(offset + 2); triangles->add(offset + 1);
     triangles->add(offset + 0); triangles->add(offset + 3); triangles->add(offset + 2);
@@ -154,10 +154,10 @@ void createSouthFace(List<int>* vertices, int& offset, List<int>* triangles, con
 
 void createEastFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z, const unsigned int colorIndex)
 {
-    vertices->add(compactVertex(colorIndex, x + 1, y, z, 0));
-    vertices->add(compactVertex(colorIndex, x + 1, y + 1, z, 0));
-    vertices->add(compactVertex(colorIndex, x + 1, y + 1, z + 1, 0));
-    vertices->add(compactVertex(colorIndex, x + 1, y, z + 1, 0));
+    vertices->add(compactVertex(colorIndex, x + 1, y, z, 2));
+    vertices->add(compactVertex(colorIndex, x + 1, y + 1, z, 2));
+    vertices->add(compactVertex(colorIndex, x + 1, y + 1, z + 1, 2));
+    vertices->add(compactVertex(colorIndex, x + 1, y, z + 1, 2));
 
     triangles->add(offset + 0); triangles->add(offset + 2); triangles->add(offset + 1);
     triangles->add(offset + 0); triangles->add(offset + 3); triangles->add(offset + 2);
@@ -167,15 +167,23 @@ void createEastFace(List<int>* vertices, int& offset, List<int>* triangles, cons
 
 void createWestFace(List<int>* vertices, int& offset, List<int>* triangles, const int x, const int y, const int z, const unsigned int colorIndex)
 {
-    vertices->add(compactVertex(colorIndex, x, y, z + 1, 0));
-    vertices->add(compactVertex(colorIndex, x, y + 1, z + 1, 0));
-    vertices->add(compactVertex(colorIndex, x, y + 1, z, 0));
-    vertices->add(compactVertex(colorIndex, x, y, z, 0));
+    vertices->add(compactVertex(colorIndex, x, y, z + 1, 2));
+    vertices->add(compactVertex(colorIndex, x, y + 1, z + 1, 2));
+    vertices->add(compactVertex(colorIndex, x, y + 1, z, 2));
+    vertices->add(compactVertex(colorIndex, x, y, z, 2));
 
     triangles->add(offset + 0); triangles->add(offset + 2); triangles->add(offset + 1);
     triangles->add(offset + 0); triangles->add(offset + 3); triangles->add(offset + 2);
 
     offset += 4;
+}
+
+void createRun(List<int>* vertices, int& offset, List<int>* triangles, int x, int y, int z, const int xDir, const int yDir, const int zDir, const int xCh, const int yCh, const int zCh, const unsigned int colorIndex)
+{
+    while (x < Chunk::sizeInBlocks && z < Chunk::sizeInBlocks && y < Chunk::sizeInBlocks)
+    {
+
+    }
 }
 
 void ChunkSystem::buildMesh(Chunk* chunk)
@@ -248,7 +256,7 @@ void ChunkSystem::buildMesh(Chunk* chunk)
         }
     }
 
-    Console::Log("Built ChunkSystem Mesh with %s vertices and %s triangles indices.\n", std::to_string(vertices.length()).c_str(), std::to_string(triangles.length()).c_str());
+    Console::Log("[LOG] Built ChunkSystem Mesh with %s vertices and %s triangles indices.\n", std::to_string(vertices.length()).c_str(), std::to_string(triangles.length()).c_str());
 
     //add it to the mesh
     if (vertices.length() > 0)

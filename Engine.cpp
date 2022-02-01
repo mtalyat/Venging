@@ -46,14 +46,17 @@ void Engine::run()
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 
-	//clock_t start = clock();
-	//clock_t elapsed = clock();
-	//clock_t now;
-	auto start = std::chrono::system_clock::now();
-	auto last = start;
+	Stopwatch watch;
+	watch.start();
+
+	int frameCount = 0;
+	float timer = 0.0f;
+	int fps = 0;
 
 	while (running && !glfwWindowShouldClose(window))
 	{
+		frameCount++;
+
 		//start by clearing
 		workingWindow->clear();
 
@@ -64,14 +67,20 @@ void Engine::run()
 		currentScene->render(workingWindow);
 
 		//record time passed
-		auto now = std::chrono::system_clock::now();
-		std::chrono::duration<float> elapsed_seconds = now - last;
-		std::chrono::duration<float> total_seconds = now - start;
+		watch.lap();
 
-		Time::deltaTime = elapsed_seconds.count();
-		Time::timeSinceStartup = total_seconds.count();
+		Time::deltaTime = watch.getLapTimeElapsed();
+		Time::timeSinceStartup = watch.getTotalTimeElapsed();
 
-		last = now;
+		timer += Time::delta();
+
+		if (timer >= 1.0f)
+		{
+			timer -= 1.0f;
+			fps = frameCount;
+			frameCount = 0;
+			Console::Log("[LOG] FPS: %s\n", std::to_string(fps).c_str());
+		}
 	}
 }
 
