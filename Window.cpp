@@ -56,7 +56,7 @@ void Window::setBackgroundColor(Color color)
 
 void Window::clear()
 {
-	glClearColor(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
+	glClearColor(backgroundColor.rf(), backgroundColor.gf(), backgroundColor.bf(), backgroundColor.af());
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 

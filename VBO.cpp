@@ -1,8 +1,7 @@
-#include "pch.h"
-#include"VBO.h"
+#include "VBO.h"
 
 // Constructor that generates a Vertex Buffer Object and links it to vertices
-VBO::VBO(GLfloat* vertices, GLsizeiptr size)
+VBO::VBO(GLuint* vertices, GLsizeiptr size)
 {
 	//store in buffer array, size of bytes, data itself, and...
 //STREAM -> vertices modified once and used a few times
@@ -31,7 +30,7 @@ void VBO::unbind()
 }
 
 // Deletes the VBO
-void VBO::close()
+void VBO::deleteVBO()
 {
 	glDeleteBuffers(1, &ID);
 }

@@ -8,6 +8,7 @@
 #include "Scene.h"
 #include "List.h"
 #include "Object.h"
+#include "ColorPalette.h"
 
 class Window;
 class Scene;

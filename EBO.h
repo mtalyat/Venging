@@ -21,7 +21,7 @@ public:
 	// Unbinds the EBO
 	void unbind();
 	// Deletes the EBO
-	void close();
+	void deleteEBO();
 };
 
 #endif

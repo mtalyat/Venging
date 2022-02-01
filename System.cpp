@@ -2,17 +2,17 @@
 
 System::System() : Object()
 {
-	components = List<Component*>();
+	entities = List<Entity*>();
 }
 
-void System::addComponent(Component* component)
+void System::addEntity(Entity* entity)
 {
-	components.add(component);
+	entities.add(entity);
 }
 
-bool System::removeComponent(Component* component)
+bool System::removeEntity(Entity* entity)
 {
-	return components.remove(component);
+	return entities.remove(entity);
 }
 
 void System::init()
@@ -28,27 +28,27 @@ void System::start()
 void System::update()
 {
 	int i = 0;
-	for (; i < components.length(); i++)
+	for (; i < entities.length(); i++)
 	{
-		updateEntity(components[i]);
+		updateEntity(i);
 	}
 }
 
 void System::fixedUpdate()
 {
 	int i = 0;
-	for (; i < components.length(); i++)
+	for (; i < entities.length(); i++)
 	{
-		fixedUpdateEntity(components[i]);
+		fixedUpdateEntity(i);
 	}
 }
 
-void System::updateEntity(Component* component)
+void System::updateEntity(const int index)
 {
-	
+
 }
 
-void System::fixedUpdateEntity(Component* component)
+void System::fixedUpdateEntity(const int index)
 {
 
 }

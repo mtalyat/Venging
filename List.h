@@ -24,6 +24,7 @@ public:
 	T get(const int index);
 	void set(const int index, T t);
 	void clear();
+	T* getPointerToFirst();
 
 	T operator[](const int index);
 
@@ -163,6 +164,17 @@ inline void List<T>::clear()
 {
 	content.clear();
 	count = 0;
+}
+
+template<typename T>
+inline T* List<T>::getPointerToFirst()
+{
+	if (length() == 0)
+	{
+		return nullptr;
+	}
+
+	return &content[0];
 }
 
 /// <summary>

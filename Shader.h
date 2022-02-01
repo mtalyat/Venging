@@ -8,8 +8,7 @@
 #include <iostream>
 #include <cerrno>
 #include "Object.h"
-
-std::string get_file_contents(const char* filename);
+#include "Helper.h"
 
 /// <summary>
 /// An interface for vertex and fragment shaders.
@@ -21,8 +20,9 @@ public:
 	GLuint ID;
 	Shader(const char* vertexFile, const char* fragmentFile);
 
-	void activate();
+	void use();
 	void close();
+	void deleteProgram();
 
 private:
 	// Checks if the different Shaders have compiled properly

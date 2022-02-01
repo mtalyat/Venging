@@ -1,4 +1,7 @@
+#include <chrono>
+#include <ctime>
 #include "Engine.h"
+#include "Time.h"
 
 Engine::Engine(Window* ww)
 {
@@ -43,6 +46,12 @@ void Engine::run()
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 
+	//clock_t start = clock();
+	//clock_t elapsed = clock();
+	//clock_t now;
+	auto start = std::chrono::system_clock::now();
+	auto last = start;
+
 	while (running && !glfwWindowShouldClose(window))
 	{
 		//start by clearing
@@ -53,6 +62,16 @@ void Engine::run()
 
 		//render the scene
 		currentScene->render(workingWindow);
+
+		//record time passed
+		auto now = std::chrono::system_clock::now();
+		std::chrono::duration<float> elapsed_seconds = now - last;
+		std::chrono::duration<float> total_seconds = now - start;
+
+		Time::deltaTime = elapsed_seconds.count();
+		Time::timeSinceStartup = total_seconds.count();
+
+		last = now;
 	}
 }
 

@@ -1,4 +1,3 @@
-#include "pch.h"
 #include"EBO.h"
 
 // Constructor that generates a Elements Buffer Object and links it to indices
@@ -22,7 +21,7 @@ void EBO::unbind()
 }
 
 // Deletes the EBO
-void EBO::close()
+void EBO::deleteEBO()
 {
 	glDeleteBuffers(1, &ID);
 }

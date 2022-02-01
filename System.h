@@ -20,13 +20,13 @@ public:
 	/// Adds a Component to this System.
 	/// </summary>
 	/// <param name="e"></param>
-	void addComponent(Component* component);
+	virtual void addEntity(Entity* entity);
 	/// <summary>
 	/// Removes a Component from this System.
 	/// </summary>
 	/// <param name="e"></param>
 	/// <returns></returns>
-	bool removeComponent(Component* component);
+	virtual bool removeEntity(Entity* entity);
 
 	/// <summary>
 	/// Called when the System is initialized after it has been created, or once the Scene has initialized.
@@ -45,20 +45,19 @@ public:
 	/// </summary>
 	virtual void fixedUpdate();
 
-protected:
 	/// <summary>
-	/// Called for each Component in the System during the Update loop, unless Update is defined otherwise.
+	/// Updates one Entity during the update loop, unless update is defined as otherwise.
 	/// </summary>
-	/// <param name="entity"></param>
-	virtual void updateEntity(Component* component);
+	/// <param name="index"></param>
+	virtual void updateEntity(const int index);
 	/// <summary>
-	/// Called for each Component in the System during the Fixed Update loop, unless Fixed Update is defined otherwise.
+	/// Updates one Entity during the fixed update loop, unless fixedUpdate is defined as otherwise.
 	/// </summary>
-	/// <param name="component"></param>
-	virtual void fixedUpdateEntity(Component* component);
+	/// <param name="index"></param>
+	virtual void fixedUpdateEntity(const int index);
 
-private:
-	List<Component*> components;
+protected:
+	List<Entity*> entities;
 };
 
 #endif

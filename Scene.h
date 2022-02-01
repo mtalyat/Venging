@@ -2,18 +2,16 @@
 #define SCENE_H
 
 #include <cstdbool>
-#include <GLFW/glfw3.h>
 #include "System.h"
 #include "Vector3.h"
 #include "List.h"
 #include "Object.h"
-#include "Shader.h"
-#include "VAO.h"
-#include "VBO.h"
-#include "EBO.h"
 #include "Window.h"
 #include "Transform.h"
 #include "Camera.h"
+#include "ColorPalette.h"
+#include "Color.h"
+#include "RenderingSystem.h"
 
 /// <summary>
 /// The Scene class regulates all of the Entities, Components and Systems within the Scene.
@@ -77,10 +75,9 @@ private:
 	bool isInitialized;
 	bool isStarted;
 
-	VAO* vao;
-	VBO* vbo;
-	EBO* ebo;
-	Shader* shaderProgram;
+	ColorPalette palette;
+
+	RenderingSystem* renderSystem;
 
 	List<System*> systems;
 	List<Entity*> entities;

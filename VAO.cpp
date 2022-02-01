@@ -1,4 +1,3 @@
-#include "pch.h"
 #include"VAO.h"
 
 // Constructor that generates a VAO ID
@@ -11,7 +10,8 @@ VAO::VAO()
 void VAO::linkAttribute(VBO& VBO, GLuint layout, GLuint numComponents, GLenum type, GLsizeiptr stride, void* offset)
 {
 	VBO.bind();
-	glVertexAttribPointer(layout, numComponents, type, GL_FALSE, stride, offset);
+	//glVertexAttribPointer(layout, numComponents, type, GL_FALSE, stride, offset);
+	glVertexAttribIPointer(layout, numComponents, type, stride, offset);
 	glEnableVertexAttribArray(layout);
 	VBO.unbind();
 }
@@ -29,7 +29,7 @@ void VAO::unbind()
 }
 
 // Deletes the VAO
-void VAO::close()
+void VAO::deleteVAO()
 {
 	glDeleteVertexArrays(1, &ID);
 }

@@ -4,6 +4,7 @@
 #include<glad/glad.h>
 #include"VBO.h"
 #include "Object.h"
+#include "Console.h"
 
 /// <summary>
 /// Vertex Array Object.
@@ -24,6 +25,6 @@ public:
 	// Unbinds the VAO
 	void unbind();
 	// Deletes the VAO
-	void close();
+	void deleteVAO();
 };
 #endif

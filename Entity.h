@@ -3,6 +3,7 @@
 
 #include <string>
 #include <cstddef>
+#include <typeinfo>
 #include "Component.h"
 #include "List.h"
 #include "Object.h"
@@ -33,6 +34,8 @@ public:
 	/// </summary>
 	/// <param name="comp"></param>
 	void addComponent(Component* comp);
+
+	template <class T> T* getComponent();
 protected:
 	std::string name;
 	Transform* transformPtr;
@@ -41,4 +44,23 @@ private:
 	List<Component*> components;
 };
 
+template<class T>
+inline T* Entity::getComponent()
+{
+	//cycle through the components, if we find one that matches type, return it
+	int i = 0;
+	for (; i < components.length(); i++)
+	{
+		if (typeid(*components[i]) == typeid(T))
+		{
+			return (T*)(components[i]);
+		}
+	}
+
+	//not found
+	return NULL;
+}
+
 #endif
+
+
