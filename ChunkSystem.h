@@ -7,6 +7,8 @@
 #include "Console.h"
 #include "Vector3.h"
 #include "Color.h"
+#include "Stopwatch.h"
+#include "ChunkBuilder.h"
 
 class ChunkSystem :
     public System
