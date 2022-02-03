@@ -1,5 +1,10 @@
 #include "VoxelData.h"
 
+VoxelData::VoxelData()
+{
+    this->data = 0;
+}
+
 VoxelData::VoxelData(int data)
 {
     this->data = data;
@@ -28,6 +33,11 @@ int VoxelData::getColor()
 int VoxelData::getRawData()
 {
     return data;
+}
+
+bool VoxelData::isEmpty()
+{
+    return getRawType() == 0;
 }
 
 std::string VoxelData::toString()

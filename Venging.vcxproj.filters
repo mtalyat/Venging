@@ -37,6 +37,9 @@
     <Filter Include="Resource Files\Palettes">
       <UniqueIdentifier>{e8092103-d8a0-493c-acb5-594c799001b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Enums">
+      <UniqueIdentifier>{e5da057b-fa04-42a6-977d-017b2c19476a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Venging.cpp">
@@ -215,9 +218,6 @@
     <ClInclude Include="ChunkSystem.h">
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
-    <ClInclude Include="VoxelType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="VoxelData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -230,6 +230,12 @@
     <ClInclude Include="ChunkBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="VoxelType.h">
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag">
@@ -241,5 +247,10 @@
     <None Include="default.palette">
       <Filter>Resource Files\Palettes</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TODO.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

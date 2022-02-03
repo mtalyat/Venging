@@ -2,13 +2,9 @@
 
 /*
 
-    Note: Random 100 is not valid for statistics, as it is possible for blocks to replace another during generation,
-    thus making it render less than 100 blocks.
-
     Benchmark 1 for mesh building: No optimizations
     100% of original
 
-Random 100:         9568 verts, 3588 tris
 Solid:              98304 verts, 36864 tris
 Stripes X dir:      532480 verts, 199680 tris
 Stripes Y dir:      532480 verts, 199680 tris
@@ -17,11 +13,17 @@ Stripes Z dir:      532480 verts, 199680 tris
     Benchmark 2 for mesh building: Compacted vertices
     75% improvement for vertex count, 0% improvement for triangles and time
 
-Random 100:         2368 verts, 3552 tris, 0.01 seconds
 Solid:              24576 verts, 36864 tris, 0.03 seconds
 Stripes X dir:      133120 verts, 199680 tris, 0.06 seconds
 Stripes Y dir:      133120 verts, 199680 tris, 0.06 seconds
 Stripes Z dir:      133120 verts, 199680 tris, 0.06 seconds
+
+    Benchmark 3 for mesh building: Run meshing
+
+Solid:              780 verts       (3.2% of prev, 0.7% of orig),   1170 tris       (3.2%),     0.015 seconds   (50.0% of prev)
+Stripes X dir:      6144 verts      (4.6% of prev, 1.2% of orig),   9216 tris,      (4.6%),     0.009 seconds   (15.0% of prev)
+Stripes Y dir:      69632 verts     (52.3% of prev, 13.1% of orig), 104448 tris,    (52.3%),    0.025 seconds   (41.7% of prev)
+Stripes Z dir:      133120 verts    (100% of prev, 25% of orig),    199680 tris,    (100.0%),   0.04 seconds    (66.7% of prev)
 
 */
 

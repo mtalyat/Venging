@@ -54,7 +54,20 @@ int main()
     //set all to solid
     for (int i = 0; i < Chunk::totalSizeInBlocks; i++)
     {
-        chunk2->set(i, VoxelData(1, i % 256));
+        if (i <= 1)
+        {
+            chunk2->set(i, VoxelData(0, 0));
+        }
+        else
+        if (Random::range(0, 20) != -1)
+        {
+            chunk2->set(i, VoxelData(1, 231));//white
+        }
+        else
+        {
+            chunk2->set(i, VoxelData(1, 9));//red
+        }
+        
     }
     Renderer* chunkRenderer2 = new Renderer();
     chunkEntity2->addComponent(chunkRenderer2);
@@ -76,7 +89,7 @@ int main()
             {
                 if (z % 2 == 0 && y % 2 == 0)
                 {
-                    chunk3->set(x, y, z, VoxelData(1, (x + y + z) % 256));
+                    chunk3->set(x, y, z, VoxelData(1, 1));
                 }
             }
         }
@@ -100,7 +113,7 @@ int main()
             {
                 if (x % 2 == 0 && y % 2 == 0)
                 {
-                    chunk4->set(x, y, z, VoxelData(1, 255 - ((x + y + z) % 256)));
+                    chunk4->set(x, y, z, VoxelData(1, 2));
                 }
             }
         }
@@ -124,7 +137,7 @@ int main()
             {
                 if (x % 2 == 0 && z % 2 == 0)
                 {
-                    chunk5->set(x, y, z, VoxelData(1, (x + y + z) % 256));
+                    chunk5->set(x, y, z, VoxelData(1, 4));
                 }
             }
         }

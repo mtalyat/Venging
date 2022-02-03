@@ -97,13 +97,11 @@ private:
 	int flatten(const int x, const int y, const int z);
 };
 
-#endif
-
 template<class T>
 inline Map<T>::Map(int size)
 {
 	this->size = size;
-	this->data = new T[length()];
+	this->data = new T[length()]{};
 }
 
 template<class T>
@@ -182,3 +180,5 @@ inline int Map<T>::flatten(const int x, const int y, const int z)
 {
 	return x + size * (z + size * y);
 }
+
+#endif

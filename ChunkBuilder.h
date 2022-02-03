@@ -4,6 +4,8 @@
 #include "Object.h"
 #include "Mesh.h"
 #include "Chunk.h"
+#include "Direction.h"
+#include "Map.h"
 
 class ChunkBuilder :
     public Object
@@ -22,14 +24,25 @@ public:
     /// <returns></returns>
     Mesh* buildMesh(Mesh* mesh);
 private:
-    //apparently the {} initializes all values to 0 (false)
-    bool visitedXN[Chunk::sizeInBlocks]{};
-    bool visitedXP[Chunk::sizeInBlocks]{};
-    bool visitedYN[Chunk::sizeInBlocks]{};
-    bool visitedYP[Chunk::sizeInBlocks]{};
-    bool visitedZN[Chunk::sizeInBlocks]{};
-    bool visitedZP[Chunk::sizeInBlocks]{};
+    Map<bool> visitedWest = Map<bool>(Chunk::sizeInBlocks);//initialize to false
+    Map<bool> visitedEast = Map<bool>(Chunk::sizeInBlocks);
+    Map<bool> visitedNorth = Map<bool>(Chunk::sizeInBlocks);
+    Map<bool> visitedSouth = Map<bool>(Chunk::sizeInBlocks);
+    Map<bool> visitedUp = Map<bool>(Chunk::sizeInBlocks);
+    Map<bool> visitedDown = Map<bool>(Chunk::sizeInBlocks);
 
     Chunk* chunkPtr;
+
+    const Vector3 directions[6] = {
+        Vector3(0, 1, 0),
+        Vector3(0, -1, 0),
+        Vector3(0, 0, 1),
+        Vector3(0, 0, -1),
+        Vector3(1, 0, 0),
+        Vector3(-1, 0, 0)
+    };
+
+    bool visibleFace(const int x, const int y, const int z, const int direction);
+    void createRuns(const int colorId, const int x, const int y, const int z, List<int>* vertices, List<int>* triangles, int& offset);
 };
 

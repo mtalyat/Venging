@@ -1,6 +1,7 @@
 #ifndef VOXELDATA_H
 #define VOXELDATA_H
 
+#include <cstdbool>
 #include "Object.h"
 #include "Helper.h"
 #include "VoxelType.h"
@@ -9,6 +10,10 @@ struct VoxelData :
     public Object
 {
 public:
+    /// <summary>
+    /// Creates an empty VoxelData.
+    /// </summary>
+    VoxelData();
     /// <summary>
     /// Creates a new VoxelData using the raw data value.
     /// </summary>
@@ -41,6 +46,11 @@ public:
     /// </summary>
     /// <returns></returns>
     int getRawData();
+    /// <summary>
+    /// Determines if this VoxelData is an empty voxel or not.
+    /// </summary>
+    /// <returns></returns>
+    bool isEmpty();
 
     std::string toString() override;
 private:
