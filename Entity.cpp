@@ -1,10 +1,10 @@
 #include "Entity.h"
-#include "Transform.h"
+#include "TransformComponent.h"
 
 Entity::Entity()
 {
 	name = "";
-	transformPtr = new Transform();
+	transformPtr = new TransformComponent();
 }
 
 Entity::~Entity()
@@ -12,7 +12,7 @@ Entity::~Entity()
 	delete(transformPtr);
 }
 
-Transform* Entity::transform()
+TransformComponent* Entity::transform()
 {
 	return transformPtr;
 }

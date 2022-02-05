@@ -16,8 +16,8 @@ RenderingSystem::~RenderingSystem()
 
 void RenderingSystem::render(Window* window)
 {
-	Camera::main()->inputs(window, shaderProgram);
-	Camera::main()->matrix(45.0f, 0.1f, 1000.0f, shaderProgram, "camMatrix", window);
+	CameraComponent::main()->inputs(window, shaderProgram);
+	CameraComponent::main()->matrix(45.0f, 0.1f, 1000.0f, shaderProgram, "camMatrix", window);
 
 	//render each mesh in the rendering system
 	int i = 0;
@@ -35,7 +35,7 @@ void RenderingSystem::init()
 
 void RenderingSystem::addEntity(Entity* entity)
 {
-	Renderer* r = entity->getComponent<Renderer>();
+	RendererComponent* r = entity->getComponent<RendererComponent>();
 
 	if (r == NULL)
 	{
@@ -55,5 +55,5 @@ bool RenderingSystem::removeEntity(Entity* entity)
 		return false;
 	}
 
-	return renderers.remove(entity->getComponent<Renderer>());
+	return renderers.remove(entity->getComponent<RendererComponent>());
 }

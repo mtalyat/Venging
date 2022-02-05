@@ -4,7 +4,7 @@
 #include "Object.h"
 
 class Entity;
-class Transform;
+class TransformComponent;
 
 /// <summary>
 /// A generic Component that holds data for Entity objects.
@@ -34,7 +34,7 @@ public:
 	/// Gets the Transform that belongs to the Entity that this Component is on.
 	/// </summary>
 	/// <returns></returns>
-	Transform* transform();
+	TransformComponent* transform();
 
 	/// <summary>
 	/// Sets the Entity that this Component is attached to.

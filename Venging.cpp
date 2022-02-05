@@ -1,10 +1,10 @@
 #include "Engine.h"
 #include "Scene.h"
 #include "Entity.h"
-#include "Camera.h"
+#include "CameraComponent.h"
 #include "Window.h"
 #include "Console.h"
-#include "Transform.h"
+#include "TransformComponent.h"
 #include "Chunk.h"
 #include "RenderingSystem.h"
 #include "ChunkSystem.h"
@@ -24,7 +24,7 @@ int main()
 
     Entity* camEntity = new Entity();
     camEntity->transform()->setPosition(glm::vec3(0.0f, 0.0f, 10.0f));
-    Camera* cam = new Camera();
+    CameraComponent* cam = new CameraComponent();
     camEntity->addComponent(cam);
 
     //rendering
@@ -41,7 +41,7 @@ int main()
     {
         chunk->set(Random::range(0, Chunk::totalSizeInBlocks), VoxelData(1, Random::range(0, 256)));
     }
-    Renderer* chunkRenderer = new Renderer();
+    RendererComponent* chunkRenderer = new RendererComponent();
     chunkEntity->addComponent(chunkRenderer);
     ChunkSystem* cs = new ChunkSystem();
     cs->addEntity(chunkEntity);
@@ -71,7 +71,7 @@ int main()
         }
         
     }
-    Renderer* chunkRenderer2 = new Renderer();
+    RendererComponent* chunkRenderer2 = new RendererComponent();
     chunkEntity2->addComponent(chunkRenderer2);
     //add to existing system
     cs->addEntity(chunkEntity2);
@@ -96,7 +96,7 @@ int main()
             }
         }
     }
-    Renderer* chunkRenderer3 = new Renderer();
+    RendererComponent* chunkRenderer3 = new RendererComponent();
     chunkEntity3->addComponent(chunkRenderer3);
     cs->addEntity(chunkEntity3);
     rs->addEntity(chunkEntity3);
@@ -120,7 +120,7 @@ int main()
             }
         }
     }
-    Renderer* chunkRenderer4 = new Renderer();
+    RendererComponent* chunkRenderer4 = new RendererComponent();
     chunkEntity4->addComponent(chunkRenderer4);
     cs->addEntity(chunkEntity4);
     rs->addEntity(chunkEntity4);
@@ -144,7 +144,7 @@ int main()
             }
         }
     }
-    Renderer* chunkRenderer5 = new Renderer();
+    RendererComponent* chunkRenderer5 = new RendererComponent();
     chunkEntity5->addComponent(chunkRenderer5);
     cs->addEntity(chunkEntity5);
     rs->addEntity(chunkEntity5);

@@ -10,24 +10,24 @@ class Entity;
 /// <summary>
 /// Transforms represent where an Entity is spacially represented in the Scene, in 3D space.
 /// </summary>
-class Transform :
+class TransformComponent :
 	public Component
 {
 public:
 	/// <summary>
 	/// Creates a new Transform.
 	/// </summary>
-	Transform();
+	TransformComponent();
 	/// <summary>
 	/// Creates a new Transform that is on the given Entity.
 	/// </summary>
 	/// <param name="entityRef"></param>
-	Transform(Entity& entityRef);
+	TransformComponent(Entity& entityRef);
 	/// <summary>
 	/// Copy constructor.
 	/// </summary>
 	/// <param name="other"></param>
-	Transform(const Transform& other);
+	TransformComponent(const TransformComponent& other);
 
 	/// <summary>
 	/// Returns the Transform's position in world space.
@@ -82,25 +82,25 @@ public:
 	/// Gets the parent of this Transform.
 	/// </summary>
 	/// <returns></returns>
-	Transform* getParent();
+	TransformComponent* getParent();
 	/// <summary>
 	/// Sets the parent of this Transform.
 	/// </summary>
 	/// <param name="transform"></param>
-	void setParent(Transform* transform);
+	void setParent(TransformComponent* transform);
 
 	/// <summary>
 	/// Gets the child Transform at the given index.
 	/// </summary>
 	/// <param name="index"></param>
 	/// <returns></returns>
-	Transform* getChild(int index);
+	TransformComponent* getChild(int index);
 private:
 	glm::vec3 localPosition;
 	glm::vec3 localScale;
 
-	Transform* parent;
-	List<Transform*> children;
+	TransformComponent* parent;
+	List<TransformComponent*> children;
 
 	/// <summary>
 	/// Initializes this Transform be located at the origin with no parent.
@@ -111,13 +111,13 @@ private:
 	/// Adds a child to this Transform.
 	/// </summary>
 	/// <param name="child"></param>
-	void addChild(Transform* child);
+	void addChild(TransformComponent* child);
 	/// <summary>
 	/// Removes a child from this Transform.
 	/// </summary>
 	/// <param name="child"></param>
 	/// <returns></returns>
-	bool removeChild(Transform* child);
+	bool removeChild(TransformComponent* child);
 };
 
 #endif

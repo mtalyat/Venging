@@ -1,5 +1,5 @@
 #include "Component.h"
-#include "Transform.h"
+#include "TransformComponent.h"
 #include "Entity.h"
 
 Component::Component()
@@ -17,7 +17,7 @@ Entity* Component::entity()
 	return entityPtr;
 }
 
-Transform* Component::transform()
+TransformComponent* Component::transform()
 {
 	Entity* e = entity();
 

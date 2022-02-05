@@ -3,14 +3,14 @@
 
 #include <GLFW/glfw3.h>
 #include "System.h"
-#include "Renderer.h"
+#include "RendererComponent.h"
 #include "Console.h"
 #include "Shader.h"
 #include "VAO.h"
 #include "VBO.h"
 #include "EBO.h"
 #include "Window.h"
-#include "Camera.h"
+#include "CameraComponent.h"
 #include "ColorPalette.h"
 #include "Color.h"
 
@@ -33,7 +33,7 @@ public:
     bool removeEntity(Entity* entity) override;
 
 private:
-    List<Renderer*> renderers;
+    List<RendererComponent*> renderers;
 
     //open gl stuff
     Shader* shaderProgram;

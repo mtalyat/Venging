@@ -24,7 +24,7 @@ void Scene::instantiate(Entity* e, glm::vec3 position)
 	instantiate(e, position, nullptr);
 }
 
-void Scene::instantiate(Entity* e, glm::vec3 position, Transform* parent)
+void Scene::instantiate(Entity* e, glm::vec3 position, TransformComponent* parent)
 {
 	e->transform()->setParent(parent);
 
@@ -121,7 +121,7 @@ void Scene::stop()
 void Scene::render(Window* window)
 {
 	//camera events
-	if (Camera::main() == nullptr)
+	if (CameraComponent::main() == nullptr)
 	{
 		//cannot render anything if no camera
 		Console::LogError("There is no main Camera assigned in the Scene!");

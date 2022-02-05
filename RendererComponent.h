@@ -5,16 +5,16 @@
 #include "Component.h"
 #include "Mesh.h"
 
-class Renderer
+class RendererComponent
 	: public Component
 {
 public:
 	/// <summary>
 	/// Creates a new Renderer.
 	/// </summary>
-	Renderer();
+	RendererComponent();
 
-	~Renderer();
+	~RendererComponent();
 
 	/// <summary>
 	/// Deletes the old Mesh and returns a new Mesh.

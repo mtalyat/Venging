@@ -62,7 +62,7 @@ void ChunkSystem::buildMesh(Chunk* chunk)
     watch.start();
 
     //no point in building if no renderer
-    Renderer* r = chunk->entity()->getComponent<Renderer>();
+    RendererComponent* r = chunk->entity()->getComponent<RendererComponent>();
     Mesh* mesh = r->createNewMesh();
 
     if (r == NULL)

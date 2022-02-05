@@ -31,7 +31,7 @@ Mesh::~Mesh()
 		delete[] triangles;
 }
 
-void Mesh::render(Transform* transform, Shader* shaderProgram)
+void Mesh::render(TransformComponent* transform, Shader* shaderProgram)
 {
 	//if nothing to render, do nothing
 	if (triangleCount == 0) return;
@@ -107,7 +107,7 @@ void Mesh::rebuild()
 	ebo->unbind();
 }
 
-void Mesh::matrix(Transform* transform, Shader* shaderProgram)
+void Mesh::matrix(TransformComponent* transform, Shader* shaderProgram)
 {
 	//TODO: if no change from last time, do not do anything
 

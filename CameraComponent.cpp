@@ -1,8 +1,8 @@
-#include "Camera.h"
+#include "CameraComponent.h"
 
-Camera* Camera::mainCamera = nullptr;
+CameraComponent* CameraComponent::mainCamera = nullptr;
 
-Camera::Camera() : Component()
+CameraComponent::CameraComponent() : Component()
 {
 	//if no main camera, set to this one
 	if (mainCamera == nullptr)
@@ -11,7 +11,7 @@ Camera::Camera() : Component()
 	}
 }
 
-void Camera::matrix(float FOVdeg, float nearPlane, float farPlane, Shader* shader, const char* uniform, Window* window)
+void CameraComponent::matrix(float FOVdeg, float nearPlane, float farPlane, Shader* shader, const char* uniform, Window* window)
 {
 	//get the position from the main camera
 	glm::vec3 vPos = transform()->getPosition();
@@ -31,7 +31,7 @@ void Camera::matrix(float FOVdeg, float nearPlane, float farPlane, Shader* shade
 	shader->setMatrix4(projection * view, "camMatrix");
 }
 
-void Camera::inputs(Window* window, Shader* shaderProgram)
+void CameraComponent::inputs(Window* window, Shader* shaderProgram)
 {
 	// Handles key inputs
 	if (glfwGetKey(window->glfwWindow(), GLFW_KEY_W) == GLFW_PRESS)
@@ -119,17 +119,17 @@ void Camera::inputs(Window* window, Shader* shaderProgram)
 	}
 }
 
-void Camera::setAsMain()
+void CameraComponent::setAsMain()
 {
 	setMain(this);
 }
 
-void Camera::setMain(Camera* cam)
+void CameraComponent::setMain(CameraComponent* cam)
 {
 	mainCamera = cam;
 }
 
-Camera* Camera::main()
+CameraComponent* CameraComponent::main()
 {
 	return mainCamera;
 }

@@ -11,19 +11,19 @@
 #include "Component.h"
 #include "System.h"
 #include "Shader.h"
-#include "Camera.h"
+#include "CameraComponent.h"
 #include "Window.h"
 #include "Vector3.h"
-#include "Transform.h"
+#include "TransformComponent.h"
 
 /// <summary>
 /// Provides data for a Camera within a Scene. Cameras provide perspective for rendering to the screen. The mainCamera is the one that will be rendered to the screen each frame.
 /// </summary>
-class Camera
+class CameraComponent
 	: public Component
 {
 public:
-	Camera();
+	CameraComponent();
 
 	/// <summary>
 	/// Rotates the view matrix to render all the objects in 3D to the 2D screen, from Camera::mainCamera's perspective.
@@ -53,15 +53,15 @@ public:
 	/// Sets the given Camera as the main Camera.
 	/// </summary>
 	/// <param name="cam"></param>
-	static void setMain(Camera* cam);
+	static void setMain(CameraComponent* cam);
 
 	/// <summary>
 	/// Gets the main Camera.
 	/// </summary>
 	/// <returns></returns>
-	static Camera* main();
+	static CameraComponent* main();
 private:
-	static Camera* mainCamera;
+	static CameraComponent* mainCamera;
 
 	bool firstClick = false;
 

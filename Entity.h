@@ -8,7 +8,7 @@
 #include "List.h"
 #include "Object.h"
 
-class Transform;
+class TransformComponent;
 
 /// <summary>
 /// An object that exists within a Scene. Entities can hold components to store extra data.
@@ -27,7 +27,7 @@ public:
 	/// Gets the Transform for this Entity.
 	/// </summary>
 	/// <returns></returns>
-	Transform* transform();
+	TransformComponent* transform();
 
 	/// <summary>
 	/// Adds a Component to this Entity.
@@ -38,7 +38,7 @@ public:
 	template <class T> T* getComponent();
 protected:
 	std::string name;
-	Transform* transformPtr;
+	TransformComponent* transformPtr;
 
 private:
 	List<Component*> components;

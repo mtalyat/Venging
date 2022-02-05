@@ -1,17 +1,17 @@
-#include "Transform.h"
+#include "TransformComponent.h"
 #include "Entity.h"
 
-Transform::Transform()
+TransformComponent::TransformComponent()
 {
 	init();
 }
 
-Transform::Transform(Entity& entityRef) : Component(entityRef)
+TransformComponent::TransformComponent(Entity& entityRef) : Component(entityRef)
 {
 	init();
 }
 
-Transform::Transform(const Transform& other)
+TransformComponent::TransformComponent(const TransformComponent& other)
 {
 	localPosition = other.localPosition;
 	localScale = other.localScale;
@@ -19,7 +19,7 @@ Transform::Transform(const Transform& other)
 	children = other.children;
 }
 
-glm::vec3 Transform::getPosition()
+glm::vec3 TransformComponent::getPosition()
 {
 	if (parent == nullptr)
 	{
@@ -31,27 +31,27 @@ glm::vec3 Transform::getPosition()
 	}
 }
 
-void Transform::setPosition(glm::vec3 v)
+void TransformComponent::setPosition(glm::vec3 v)
 {
 	localPosition = v;
 }
 
-void Transform::movePosition(glm::vec3 v)
+void TransformComponent::movePosition(glm::vec3 v)
 {
 	setPosition(getPosition() + v);
 }
 
-glm::vec3 Transform::getLocalPosition()
+glm::vec3 TransformComponent::getLocalPosition()
 {
 	return localPosition;
 }
 
-void Transform::setLocalPosition(glm::vec3 v)
+void TransformComponent::setLocalPosition(glm::vec3 v)
 {
 	localPosition = v;
 }
 
-glm::vec3 Transform::getScale()
+glm::vec3 TransformComponent::getScale()
 {
 	if (parent == nullptr)
 	{
@@ -62,7 +62,7 @@ glm::vec3 Transform::getScale()
 	}
 }
 
-void Transform::setScale(glm::vec3 v)
+void TransformComponent::setScale(glm::vec3 v)
 {
 	if (parent == nullptr)
 	{
@@ -77,22 +77,22 @@ void Transform::setScale(glm::vec3 v)
 	}
 }
 
-glm::vec3 Transform::getLocalScale()
+glm::vec3 TransformComponent::getLocalScale()
 {
 	return localScale;
 }
 
-void Transform::setLocalScale(glm::vec3 v)
+void TransformComponent::setLocalScale(glm::vec3 v)
 {
 	localScale = v;
 }
 
-Transform* Transform::getParent()
+TransformComponent* TransformComponent::getParent()
 {
 	return parent;
 }
 
-void Transform::setParent(Transform* transform)
+void TransformComponent::setParent(TransformComponent* transform)
 {
 	//if there is a parent already, remove this from its children
 	if (parent != nullptr)
@@ -109,24 +109,24 @@ void Transform::setParent(Transform* transform)
 	}
 }
 
-Transform* Transform::getChild(int index)
+TransformComponent* TransformComponent::getChild(int index)
 {
 	return children[index];
 }
 
-void Transform::init()
+void TransformComponent::init()
 {
 	localPosition = glm::vec3();
 	localScale = glm::vec3(1, 1, 1);
 	parent = nullptr;
 }
 
-void Transform::addChild(Transform* child)
+void TransformComponent::addChild(TransformComponent* child)
 {
 	children.add(child);
 }
 
-bool Transform::removeChild(Transform* child)
+bool TransformComponent::removeChild(TransformComponent* child)
 {
 	return children.remove(child);
 }

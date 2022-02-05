@@ -7,8 +7,8 @@
 #include "List.h"
 #include "Object.h"
 #include "Window.h"
-#include "Transform.h"
-#include "Camera.h"
+#include "TransformComponent.h"
+#include "CameraComponent.h"
 #include "ColorPalette.h"
 #include "Color.h"
 #include "RenderingSystem.h"
@@ -40,7 +40,7 @@ public:
 	/// Creates a new clone of the given entity in the Scene at the given position, with the given parent Transform.
 	/// </summary>
 	/// <param name="e"></param>
-	void instantiate(Entity* e, glm::vec3 position, Transform* parent);
+	void instantiate(Entity* e, glm::vec3 position, TransformComponent* parent);
 
 	/// <summary>
 	/// Adds a system to this Scene.

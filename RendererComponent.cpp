@@ -1,23 +1,23 @@
-#include "Renderer.h"
+#include "RendererComponent.h"
 
-Renderer::Renderer()
+RendererComponent::RendererComponent()
 {
     meshToRender = new Mesh();
 }
 
-Renderer::~Renderer()
+RendererComponent::~RendererComponent()
 {
     delete(meshToRender);
 }
 
-Mesh* Renderer::createNewMesh()
+Mesh* RendererComponent::createNewMesh()
 {
     delete(meshToRender);
     meshToRender = new Mesh();
     return meshToRender;
 }
 
-Mesh* Renderer::mesh()
+Mesh* RendererComponent::mesh()
 {
     return meshToRender;
 }

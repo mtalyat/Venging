@@ -15,7 +15,7 @@
 #include "VAO.h"
 #include "VBO.h"
 #include "EBO.h"
-#include "Transform.h"
+#include "TransformComponent.h"
 
 class Mesh :
     public Object
@@ -29,7 +29,7 @@ public:
     /// </summary>
     /// <param name="transform"></param>
     /// <param name="shaderProgram"></param>
-    void render(Transform* transform, Shader* shaderProgram);
+    void render(TransformComponent* transform, Shader* shaderProgram);
 
     void setVertices(int* verts, int amount);
     void setTriangles(int* tris, int amount);
@@ -46,7 +46,7 @@ private:
     GLuint* triangles;
     int triangleCount;
 
-    void matrix(Transform* transform, Shader* shaderProgram);
+    void matrix(TransformComponent* transform, Shader* shaderProgram);
 };
 
 #endif

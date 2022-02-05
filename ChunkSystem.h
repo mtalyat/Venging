@@ -3,7 +3,7 @@
 
 #include "System.h"
 #include "Chunk.h"
-#include "Renderer.h"
+#include "RendererComponent.h"
 #include "Console.h"
 #include "Vector3.h"
 #include "Color.h"
