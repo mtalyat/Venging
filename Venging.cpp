@@ -1,3 +1,4 @@
+#include <functional>
 #include "Engine.h"
 #include "Scene.h"
 #include "Entity.h"
@@ -16,7 +17,15 @@ int main()
     Window* window = new Window(800, 800, "Test");
     window->setBackgroundColor(Color::gray());
 
-    Input::createActionMap("default");
+    int test = 0;
+
+    ActionMap* am = Input::createActionMap("default");
+    am->onKeyDown(GLFW_KEY_W, std::function<void()>([&test]() {
+        Console::Log(std::to_string(test).c_str());
+        test++;
+        }));
+
+    //void(*tt)() = [&test] { Console::Log(std::to_string(test).c_str()); };
 
     Engine* engine = new Engine(window);
     Scene* scene = new Scene();
