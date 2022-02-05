@@ -16,15 +16,15 @@ Scene::~Scene()
 
 void Scene::instantiate(Entity* e)
 {
-	instantiate(e, Vector3());
+	instantiate(e, glm::vec3());
 }
 
-void Scene::instantiate(Entity* e, Vector3 position)
+void Scene::instantiate(Entity* e, glm::vec3 position)
 {
 	instantiate(e, position, nullptr);
 }
 
-void Scene::instantiate(Entity* e, Vector3 position, Transform* parent)
+void Scene::instantiate(Entity* e, glm::vec3 position, Transform* parent)
 {
 	e->transform()->setParent(parent);
 

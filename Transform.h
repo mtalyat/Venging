@@ -1,8 +1,8 @@
 #ifndef TRANSFORM_H
 #define TRANSFORM_H
 
+#include <glm/glm.hpp>
 #include "Component.h"
-#include "Vector3.h"
 #include "List.h"
 
 class Entity;
@@ -33,50 +33,50 @@ public:
 	/// Returns the Transform's position in world space.
 	/// </summary>
 	/// <returns></returns>
-	Vector3 getPosition();
+	glm::vec3 getPosition();
 	/// <summary>
 	/// Sets the Transform's position in world space.
 	/// </summary>
 	/// <param name="v"></param>
-	void setPosition(Vector3 v);
+	void setPosition(glm::vec3 v);
 	/// <summary>
 	/// Moves the Transform in the given amount based on the current position.
 	/// </summary>
 	/// <param name="v"></param>
-	void movePosition(Vector3 v);
+	void movePosition(glm::vec3 v);
 
 	/// <summary>
 	/// Gets the position of the Transform relative to the parent (or origin, if parent is null).
 	/// </summary>
 	/// <returns></returns>
-	Vector3 getLocalPosition();
+	glm::vec3 getLocalPosition();
 	/// <summary>
 	/// Sets the position of the Transform relative to the parent (or origin, if parent is null).
 	/// </summary>
 	/// <returns></returns>
-	void setLocalPosition(Vector3 v);
+	void setLocalPosition(glm::vec3 v);
 
 	/// <summary>
 	/// Gets the global scale of this Transform.
 	/// </summary>
 	/// <returns></returns>
-	Vector3 getScale();
+	glm::vec3 getScale();
 	/// <summary>
 	/// Sets the global scale of this Transform.
 	/// </summary>
 	/// <param name="v"></param>
-	void setScale(Vector3 v);
+	void setScale(glm::vec3 v);
 
 	/// <summary>
 	/// Gets the local scale of this Transform.
 	/// </summary>
 	/// <returns></returns>
-	Vector3 getLocalScale();
+	glm::vec3 getLocalScale();
 	/// <summary>
 	/// Sets the local scale of this Transform.
 	/// </summary>
 	/// <param name="v"></param>
-	void setLocalScale(Vector3 v);
+	void setLocalScale(glm::vec3 v);
 
 	/// <summary>
 	/// Gets the parent of this Transform.
@@ -96,8 +96,8 @@ public:
 	/// <returns></returns>
 	Transform* getChild(int index);
 private:
-	Vector3 localPosition;
-	Vector3 localScale;
+	glm::vec3 localPosition;
+	glm::vec3 localScale;
 
 	Transform* parent;
 	List<Transform*> children;

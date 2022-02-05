@@ -112,10 +112,10 @@ void Mesh::matrix(Transform* transform, Shader* shaderProgram)
 	//TODO: if no change from last time, do not do anything
 
 	//get values from transform
-	glm::vec3 pos = transform->getPosition().toVec3();
+	glm::vec3 pos = transform->getPosition();
 	glm::vec3 origin(0.0f);//temp
 	glm::vec3 rotation(0.0f);//temp
-	glm::vec3 scale = transform->getScale().toVec3();
+	glm::vec3 scale = transform->getScale();
 
 	//modify matrix
 	glm::mat4 meshMatrix(1.0f);

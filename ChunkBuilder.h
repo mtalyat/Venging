@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdbool>
+#include <glm/glm.hpp>
 #include "Object.h"
 #include "Mesh.h"
 #include "Chunk.h"
@@ -33,13 +34,13 @@ private:
 
     Chunk* chunkPtr;
 
-    const Vector3 directions[6] = {
-        Vector3(0, 1, 0),
-        Vector3(0, -1, 0),
-        Vector3(0, 0, 1),
-        Vector3(0, 0, -1),
-        Vector3(1, 0, 0),
-        Vector3(-1, 0, 0)
+    const glm::vec3 directions[6] = {
+        glm::vec3(0, 1, 0),
+        glm::vec3(0, -1, 0),
+        glm::vec3(0, 0, 1),
+        glm::vec3(0, 0, -1),
+        glm::vec3(1, 0, 0),
+        glm::vec3(-1, 0, 0)
     };
 
     bool visibleFace(const int x, const int y, const int z, const int direction);

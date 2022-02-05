@@ -2,8 +2,8 @@
 #define SCENE_H
 
 #include <cstdbool>
+#include <glm/glm.hpp>
 #include "System.h"
-#include "Vector3.h"
 #include "List.h"
 #include "Object.h"
 #include "Window.h"
@@ -35,12 +35,12 @@ public:
 	/// Creates a new clone of the given entity in the Scene at the given position.
 	/// </summary>
 	/// <param name="e"></param>
-	void instantiate(Entity* e, Vector3 position);
+	void instantiate(Entity* e, glm::vec3 position);
 	/// <summary>
 	/// Creates a new clone of the given entity in the Scene at the given position, with the given parent Transform.
 	/// </summary>
 	/// <param name="e"></param>
-	void instantiate(Entity* e, Vector3 position, Transform* parent);
+	void instantiate(Entity* e, glm::vec3 position, Transform* parent);
 
 	/// <summary>
 	/// Adds a system to this Scene.

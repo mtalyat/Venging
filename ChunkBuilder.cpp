@@ -31,7 +31,7 @@ Mesh* ChunkBuilder::buildMesh(Mesh* mesh)
 {
     //iterate through each block in the chunk, and check if its face needs drawn
     int x, y, z, i;
-    Vector3 dir;
+    glm::vec3 dir;
     VoxelData vd;
 
     List<int> vertices;
@@ -68,7 +68,7 @@ Mesh* ChunkBuilder::buildMesh(Mesh* mesh)
 
 bool ChunkBuilder::visibleFace(const int x, const int y, const int z, const int direction)
 {
-    Vector3 dir = directions[direction];
+    glm::vec3 dir = directions[direction];
 
     int xOff = x + (int)dir.x;
     int yOff = y + (int)dir.y;

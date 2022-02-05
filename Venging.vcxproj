@@ -176,7 +176,6 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="VAO.cpp" />
     <ClCompile Include="VBO.cpp" />
-    <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Venging.cpp" />
     <ClCompile Include="VoxelData.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -214,7 +213,6 @@
     <ClInclude Include="Transform.h" />
     <ClInclude Include="VAO.h" />
     <ClInclude Include="VBO.h" />
-    <ClInclude Include="Vector3.h" />
     <ClInclude Include="VoxelData.h" />
     <ClInclude Include="VoxelType.h" />
     <ClInclude Include="Window.h" />

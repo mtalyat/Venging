@@ -23,7 +23,7 @@ int main()
     engine->addScene(scene);
 
     Entity* camEntity = new Entity();
-    camEntity->transform()->setPosition(Vector3(0.0f, 0.0f, 10.0f));
+    camEntity->transform()->setPosition(glm::vec3(0.0f, 0.0f, 10.0f));
     Camera* cam = new Camera();
     camEntity->addComponent(cam);
 
@@ -50,7 +50,7 @@ int main()
 
     //create a full chunk
     Entity* chunkEntity2 = new Entity();
-    chunkEntity2->transform()->setPosition(Vector3(0, 0, Chunk::sizeInBlocks));
+    chunkEntity2->transform()->setPosition(glm::vec3(0, 0, Chunk::sizeInBlocks));
     Chunk* chunk2 = new Chunk();
     chunkEntity2->addComponent(chunk2);
     //set all to solid
@@ -79,7 +79,7 @@ int main()
 
     //create striped chunk
     Entity* chunkEntity3 = new Entity();
-    chunkEntity3->transform()->setPosition(Vector3(0, 0, Chunk::sizeInBlocks * 2));
+    chunkEntity3->transform()->setPosition(glm::vec3(0, 0, Chunk::sizeInBlocks * 2));
     Chunk* chunk3 = new Chunk();
     chunkEntity3->addComponent(chunk3);
     //set to striped
@@ -103,7 +103,7 @@ int main()
 
     //create striped chunk going the other way
     Entity* chunkEntity4 = new Entity();
-    chunkEntity4->transform()->setPosition(Vector3(0, 0, Chunk::sizeInBlocks * 3));
+    chunkEntity4->transform()->setPosition(glm::vec3(0, 0, Chunk::sizeInBlocks * 3));
     Chunk* chunk4 = new Chunk();
     chunkEntity4->addComponent(chunk4);
     //set to striped
@@ -127,7 +127,7 @@ int main()
 
     //create striped chunk going up/down
     Entity* chunkEntity5 = new Entity();
-    chunkEntity5->transform()->setPosition(Vector3(0, 0, Chunk::sizeInBlocks * 4));
+    chunkEntity5->transform()->setPosition(glm::vec3(0, 0, Chunk::sizeInBlocks * 4));
     Chunk* chunk5 = new Chunk();
     chunkEntity5->addComponent(chunk5);
     //set to striped

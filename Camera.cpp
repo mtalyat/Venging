@@ -14,7 +14,7 @@ Camera::Camera() : Component()
 void Camera::matrix(float FOVdeg, float nearPlane, float farPlane, Shader* shader, const char* uniform, Window* window)
 {
 	//get the position from the main camera
-	Vector3 vPos = transform()->getPosition();
+	glm::vec3 vPos = transform()->getPosition();
 	glm::vec3 pos(vPos.x, vPos.y, vPos.z);
 
 	// Initializes matrices since otherwise they will be the null matrix

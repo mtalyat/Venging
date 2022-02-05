@@ -19,7 +19,7 @@ Transform::Transform(const Transform& other)
 	children = other.children;
 }
 
-Vector3 Transform::getPosition()
+glm::vec3 Transform::getPosition()
 {
 	if (parent == nullptr)
 	{
@@ -31,27 +31,27 @@ Vector3 Transform::getPosition()
 	}
 }
 
-void Transform::setPosition(Vector3 v)
+void Transform::setPosition(glm::vec3 v)
 {
 	localPosition = v;
 }
 
-void Transform::movePosition(Vector3 v)
+void Transform::movePosition(glm::vec3 v)
 {
 	setPosition(getPosition() + v);
 }
 
-Vector3 Transform::getLocalPosition()
+glm::vec3 Transform::getLocalPosition()
 {
 	return localPosition;
 }
 
-void Transform::setLocalPosition(Vector3 v)
+void Transform::setLocalPosition(glm::vec3 v)
 {
 	localPosition = v;
 }
 
-Vector3 Transform::getScale()
+glm::vec3 Transform::getScale()
 {
 	if (parent == nullptr)
 	{
@@ -62,7 +62,7 @@ Vector3 Transform::getScale()
 	}
 }
 
-void Transform::setScale(Vector3 v)
+void Transform::setScale(glm::vec3 v)
 {
 	if (parent == nullptr)
 	{
@@ -70,19 +70,19 @@ void Transform::setScale(Vector3 v)
 	}
 	else {
 		//get parent scale
-		Vector3 parentScale = parent->getScale();
+		glm::vec3 parentScale = parent->getScale();
 
 		//scale this Transform so that the scale reflects the given value v in the world
 		setLocalScale(v / parentScale);
 	}
 }
 
-Vector3 Transform::getLocalScale()
+glm::vec3 Transform::getLocalScale()
 {
 	return localScale;
 }
 
-void Transform::setLocalScale(Vector3 v)
+void Transform::setLocalScale(glm::vec3 v)
 {
 	localScale = v;
 }
@@ -116,8 +116,8 @@ Transform* Transform::getChild(int index)
 
 void Transform::init()
 {
-	localPosition = Vector3();
-	localScale = Vector3::one();
+	localPosition = glm::vec3();
+	localScale = glm::vec3(1, 1, 1);
 	parent = nullptr;
 }
 
