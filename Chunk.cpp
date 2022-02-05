@@ -45,7 +45,7 @@ int Chunk::flatten(const int x, const int y, const int z)
 	return x + sizeInBlocks * (z + sizeInBlocks * y);
 }
 
-int Chunk::combineData(BYTE type, BYTE color)
+int Chunk::combineData(vBYTE type, vBYTE color)
 {
 	return compact(0, 0, type, color);
 }

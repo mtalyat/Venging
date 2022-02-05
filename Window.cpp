@@ -67,11 +67,15 @@ GLFWwindow* Window::glfwWindow()
 
 int Window::getWidth()
 {
+	glfwGetWindowSize(windowPtr, &width, &height);
+
 	return width;
 }
 
 int Window::getHeight()
 {
+	glfwGetWindowSize(windowPtr, &width, &height);
+
 	return height;
 }
 
@@ -116,8 +120,22 @@ void Window::initializeWindow(const char* title, bool isFullScreen)
 	//load the GL
 	gladLoadGL();
 
+	//keyboard input
+	glfwSetKeyCallback(windowPtr, Input::keyCallback);
+
 	//create a port to be able to draw on in the window
 	glViewport(0, 0, width, height);
+
+	//create crop area too
+	glEnable(GL_SCISSOR_TEST);
+	glScissor(0, 0, width, height);
+
+	//resize event
+	glfwSetWindowSizeCallback(windowPtr, [](GLFWwindow* win, int w, int h)
+		{
+			glViewport(0, 0, w, h);
+			glScissor(0, 0, w, h);//only if scissor test enabled
+		});
 }
 
 bool Window::checkIfWindowCreationSuccessful()

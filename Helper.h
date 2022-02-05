@@ -6,8 +6,8 @@
 #include <bitset>
 #include "Console.h"
 
-#define BYTE unsigned char
-#define BYTE_MAX 255
+#define vBYTE unsigned char
+#define vBYTE_MAX 255
 
 /// <summary>
 /// Compacts the 4 bytes into one integer. The first argument represents the set of least significant bits.

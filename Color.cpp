@@ -33,7 +33,7 @@ int Color::r()
 
 float Color::rf()
 {
-	return r() / (float)BYTE_MAX;
+	return r() / (float)vBYTE_MAX;
 }
 
 int Color::g()
@@ -43,7 +43,7 @@ int Color::g()
 
 float Color::gf()
 {
-	return g() / (float)BYTE_MAX;
+	return g() / (float)vBYTE_MAX;
 }
 
 int Color::b()
@@ -53,7 +53,7 @@ int Color::b()
 
 float Color::bf()
 {
-	return b() / (float)BYTE_MAX;
+	return b() / (float)vBYTE_MAX;
 }
 
 int Color::a()
@@ -63,7 +63,7 @@ int Color::a()
 
 float Color::af()
 {
-	return a() / (float)BYTE_MAX;
+	return a() / (float)vBYTE_MAX;
 }
 
 int Color::rawData() const

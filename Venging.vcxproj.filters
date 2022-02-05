@@ -135,6 +135,12 @@
     <ClCompile Include="ChunkBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ActionMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System.h">
@@ -236,6 +242,15 @@
     <ClInclude Include="VoxelType.h">
       <Filter>Header Files\Enums</Filter>
     </ClInclude>
+    <ClInclude Include="ActionMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Key.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag">
@@ -250,6 +265,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="TODO.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Notes.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

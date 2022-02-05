@@ -7,6 +7,7 @@
 #include "Console.h"
 #include "Color.h"
 #include "Object.h"
+#include "Input.h"
 
 /// <summary>
 /// A wrapper class for the GLFWwindow class.

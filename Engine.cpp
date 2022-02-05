@@ -60,6 +60,9 @@ void Engine::run()
 		//start by clearing
 		workingWindow->clear();
 
+		//update input
+		Input::doInputEvents();
+
 		//update the scene
 		currentScene->update();
 

@@ -64,7 +64,7 @@ public:
 private:
 	Map<int> blocks = Map<int>(sizeInBlocks);
 
-	int combineData(BYTE type, BYTE color);
+	int combineData(vBYTE type, vBYTE color);
 };
 
 #endif

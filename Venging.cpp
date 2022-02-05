@@ -16,6 +16,8 @@ int main()
     Window* window = new Window(800, 800, "Test");
     window->setBackgroundColor(Color::gray());
 
+    Input::createActionMap("default");
+
     Engine* engine = new Engine(window);
     Scene* scene = new Scene();
     engine->addScene(scene);

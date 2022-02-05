@@ -1,0 +1,27 @@
+What does the voxel engine need?
+
+- Voxels
+- Lighting
+- State serialization and synchronization across a network
+- Physics/collision detection
+- AI features
+- Dynamic objects
+
+Also need these to make the game somewhat realistic:
+
+- Terrain with interesting features
+- Trees
+- Vegetation
+- Water
+- Artificial structures
+
+Other things players want:
+
+- Creating anything
+- Destroying everything
+- Procedural generation
+- Physical interactions on a per-voxel level
+- Alternate simulations (anything else that interacts with voxel data, e.g. vegetation growth, door responses, “logic” like Minecraft’s redstone and pistons, and so on)
+- Voxel characters
+
+Version conversion from old-new and vice versa
