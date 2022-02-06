@@ -1,6 +1,8 @@
 #include "TransformComponent.h"
 #include "Entity.h"
 
+glm::vec3 TransformComponent::up = glm::vec3(0.0f, 1.0f, 0.0f);
+
 TransformComponent::TransformComponent()
 {
 	init();
@@ -87,6 +89,40 @@ void TransformComponent::setLocalScale(glm::vec3 v)
 	localScale = v;
 }
 
+glm::vec3 TransformComponent::getRotation()
+{
+	if (parent == nullptr)
+	{
+		return getLocalRotation();
+	}
+	else
+	{
+		return parent->getRotation() + getLocalRotation();
+	}
+}
+
+void TransformComponent::setRotation(glm::vec3 v)
+{
+	if (parent == nullptr)
+	{
+		setLocalRotation(v);
+	}
+	else
+	{
+		setLocalRotation(v - parent->getRotation());
+	}
+}
+
+glm::vec3 TransformComponent::getLocalRotation()
+{
+	return localRotation;
+}
+
+void TransformComponent::setLocalRotation(glm::vec3 v)
+{
+	localRotation = v;
+}
+
 TransformComponent* TransformComponent::getParent()
 {
 	return parent;
@@ -116,8 +152,9 @@ TransformComponent* TransformComponent::getChild(int index)
 
 void TransformComponent::init()
 {
-	localPosition = glm::vec3();
-	localScale = glm::vec3(1, 1, 1);
+	localPosition = glm::vec3(0.0f, 0.0f, 0.0f);
+	localScale = glm::vec3(1.0f, 1.0f, 1.0f);
+	localRotation = glm::vec3(0.0f, 0.0f, 0.0f);
 	parent = nullptr;
 }
 

@@ -21,7 +21,7 @@ ActionMap* Input::createActionMap(const char* name)
 	return &maps[name];
 }
 
-void Input::onKeyDown(const int key, void(*func)())
+void Input::onKeyDown(const int key, std::function<void()> func)
 {
 	if (currentMap == nullptr)
 	{
@@ -32,7 +32,7 @@ void Input::onKeyDown(const int key, void(*func)())
 	currentMap->onKeyDown(key, func);
 }
 
-void Input::onKeyPress(const int key, void(*func)())
+void Input::onKeyPress(const int key, std::function<void()> func)
 {
 	if (currentMap == nullptr)
 	{
@@ -43,7 +43,7 @@ void Input::onKeyPress(const int key, void(*func)())
 	currentMap->onKeyPress(key, func);
 }
 
-void Input::onKeyUp(const int key, void(*func)())
+void Input::onKeyUp(const int key, std::function<void()> func)
 {
 	if (currentMap == nullptr)
 	{
@@ -70,6 +70,21 @@ void Input::keyCallback(GLFWwindow* window, int key, int scancode, int action, i
 	{
 		keyStates[key] = INPUT_UP;
 	}
+}
+
+void Input::cursorCallback(GLFWwindow* window, double xPos, double yPos)
+{
+
+}
+
+void Input::mouseCallback(GLFWwindow* window, int button, int action, int mods)
+{
+
+}
+
+void Input::scrollCallback(GLFWwindow* window, double xOffset, double yOffset)
+{
+
 }
 
 void Input::doInputEvents()

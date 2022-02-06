@@ -10,6 +10,7 @@
 #include "RenderingSystem.h"
 #include "ChunkSystem.h"
 #include "Random.h"
+#include "CameraControllerSystem.h"
 
 int main()
 {
@@ -17,24 +18,23 @@ int main()
     Window* window = new Window(800, 800, "Test");
     window->setBackgroundColor(Color::gray());
 
-    int test = 0;
-
     ActionMap* am = Input::createActionMap("default");
-    am->onKeyDown(GLFW_KEY_W, std::function<void()>([&test]() {
-        Console::Log(std::to_string(test).c_str());
-        test++;
-        }));
-
-    //void(*tt)() = [&test] { Console::Log(std::to_string(test).c_str()); };
 
     Engine* engine = new Engine(window);
     Scene* scene = new Scene();
     engine->addScene(scene);
 
+    //player
     Entity* camEntity = new Entity();
     camEntity->transform()->setPosition(glm::vec3(0.0f, 0.0f, 10.0f));
     CameraComponent* cam = new CameraComponent();
     camEntity->addComponent(cam);
+    CameraControllerComponent* ccc = new CameraControllerComponent();
+    camEntity->addComponent(ccc);
+
+    CameraControllerSystem* ccs = new CameraControllerSystem();
+    scene->addSystem(ccs);
+    ccs->addEntity(camEntity);
 
     //rendering
     RenderingSystem* rs = new RenderingSystem();

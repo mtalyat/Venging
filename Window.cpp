@@ -2,6 +2,7 @@
 
 bool Window::isInitialized = false;
 unsigned int Window::openWindowCount = 0;
+Window* Window::activeWindow = nullptr;
 
 Window::Window(const char* title)
 {
@@ -79,6 +80,11 @@ int Window::getHeight()
 	return height;
 }
 
+Window* Window::active()
+{
+	return activeWindow;
+}
+
 void Window::initialize()
 {
 	isInitialized = true;
@@ -122,6 +128,9 @@ void Window::initializeWindow(const char* title, bool isFullScreen)
 
 	//keyboard input
 	glfwSetKeyCallback(windowPtr, Input::keyCallback);
+	glfwSetMouseButtonCallback(windowPtr, Input::mouseCallback);
+	glfwSetCursorPosCallback(windowPtr, Input::cursorCallback);
+	glfwSetScrollCallback(windowPtr, Input::scrollCallback);
 
 	//create a port to be able to draw on in the window
 	glViewport(0, 0, width, height);
@@ -136,6 +145,8 @@ void Window::initializeWindow(const char* title, bool isFullScreen)
 			glViewport(0, 0, w, h);
 			glScissor(0, 0, w, h);//only if scissor test enabled
 		});
+
+	activeWindow = this;
 }
 
 bool Window::checkIfWindowCreationSuccessful()

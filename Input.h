@@ -36,23 +36,26 @@ public:
     /// </summary>
     /// <param name="key"></param>
     /// <param name="func"></param>
-    static void onKeyDown(const int key, void (*func)());
+    static void onKeyDown(const int key, std::function<void()> func);
 
     /// <summary>
     /// Adds an event to when the given key is held down.
     /// </summary>
     /// <param name="key"></param>
     /// <param name="func"></param>
-    static void onKeyPress(const int key, void (*func)());
+    static void onKeyPress(const int key, std::function<void()> func);
 
     /// <summary>
     /// Adds an event to when the given key is released.
     /// </summary>
     /// <param name="key"></param>
     /// <param name="func"></param>
-    static void onKeyUp(const int key, void (*func)());
+    static void onKeyUp(const int key, std::function<void()> func);
 
     static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+    static void cursorCallback(GLFWwindow* window, double xPos, double yPos);
+    static void mouseCallback(GLFWwindow* window, int button, int action, int mods);
+    static void scrollCallback(GLFWwindow* window, double xOffset, double yOffset);
 
     static void doInputEvents();
 private:

@@ -58,6 +58,8 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	int getHeight();
+
+	static Window* active();
 private:
 	int width;
 	int height;
@@ -81,6 +83,8 @@ private:
 	static void initialize();
 	static bool isInitialized;
 	static unsigned int openWindowCount;
+
+	static Window* activeWindow;
 };
 
 #endif

@@ -16,7 +16,6 @@ RenderingSystem::~RenderingSystem()
 
 void RenderingSystem::render(Window* window)
 {
-	CameraComponent::main()->inputs(window, shaderProgram);
 	CameraComponent::main()->matrix(45.0f, 0.1f, 1000.0f, shaderProgram, "camMatrix", window);
 
 	//render each mesh in the rendering system
@@ -43,7 +42,7 @@ void RenderingSystem::addEntity(Entity* entity)
 		return;
 	}
 
-	entities.add(entity);
+	System::addEntity(entity);
 	renderers.add(r);
 }
 

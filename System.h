@@ -6,6 +6,7 @@
 #include "List.h"
 #include "Object.h"
 #include "Component.h"
+#include "Console.h"
 
 /// <summary>
 /// A System provides functionality to Entities, using their Components to read and store data.
@@ -45,6 +46,16 @@ public:
 	/// </summary>
 	virtual void fixedUpdate();
 
+	/// <summary>
+	/// Initializes one Entity during the initialization of this System.
+	/// </summary>
+	/// <param name="index"></param>
+	virtual void initEntity(const int index);
+	/// <summary>
+	/// Starts one Entity during the start of this System.
+	/// </summary>
+	/// <param name="index"></param>
+	virtual void startEntity(const int index);
 	/// <summary>
 	/// Updates one Entity during the update loop, unless update is defined as otherwise.
 	/// </summary>

@@ -1,5 +1,5 @@
-#ifndef TRANSFORM_H
-#define TRANSFORM_H
+#ifndef TRANSFORMCOMPONENT_H
+#define TRANSFORMCOMPONENT_H
 
 #include <glm/glm.hpp>
 #include "Component.h"
@@ -78,6 +78,12 @@ public:
 	/// <param name="v"></param>
 	void setLocalScale(glm::vec3 v);
 
+	glm::vec3 getRotation();
+	void setRotation(glm::vec3 v);
+
+	glm::vec3 getLocalRotation();
+	void setLocalRotation(glm::vec3 v);
+
 	/// <summary>
 	/// Gets the parent of this Transform.
 	/// </summary>
@@ -95,9 +101,12 @@ public:
 	/// <param name="index"></param>
 	/// <returns></returns>
 	TransformComponent* getChild(int index);
+
+	static glm::vec3 up;
 private:
 	glm::vec3 localPosition;
 	glm::vec3 localScale;
+	glm::vec3 localRotation;
 
 	TransformComponent* parent;
 	List<TransformComponent*> children;

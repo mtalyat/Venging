@@ -17,12 +17,20 @@ bool System::removeEntity(Entity* entity)
 
 void System::init()
 {
-
+	int i = 0;
+	for (; i < entities.length(); i++)
+	{
+		initEntity(i);
+	}
 }
 
 void System::start()
 {
-
+	int i = 0;
+	for (; i < entities.length(); i++)
+	{
+		startEntity(i);
+	}
 }
 
 void System::update()
@@ -41,6 +49,14 @@ void System::fixedUpdate()
 	{
 		fixedUpdateEntity(i);
 	}
+}
+
+void System::initEntity(const int index)
+{
+}
+
+void System::startEntity(const int index)
+{
 }
 
 void System::updateEntity(const int index)

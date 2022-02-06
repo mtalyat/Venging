@@ -1,5 +1,5 @@
-#ifndef CAMERA_H
-#define CAMERA_H
+#ifndef CAMERACOMPONENT_H
+#define CAMERACOMPONENT_H
 
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
@@ -37,14 +37,6 @@ public:
 	void matrix(float FOVdeg, float nearPlane, float farPlane, Shader* shader, const char* uniform, Window* window);
 
 	/// <summary>
-	/// TEMP: Processes inputs from the Camera.
-	/// </summary>
-	/// <param name="width"></param>
-	/// <param name="height"></param>
-	/// <param name="window"></param>
-	void inputs(Window* window, Shader* shaderProgram);
-
-	/// <summary>
 	/// Sets this Camera as the main Camera.
 	/// </summary>
 	void setAsMain();
@@ -62,14 +54,6 @@ public:
 	static CameraComponent* main();
 private:
 	static CameraComponent* mainCamera;
-
-	bool firstClick = false;
-
-	float speed = 0.01f;
-	float sensitivity = 100.0f;
-
-	glm::vec3 orientation = glm::vec3(0.0f, 0.0f, -1.0f);
-	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
 };
 
 #endif
